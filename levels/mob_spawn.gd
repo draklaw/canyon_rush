@@ -14,6 +14,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	remaining_time = spawn_delay
+	rng.randomize()
 
 
 func _process(delta: float) -> void:

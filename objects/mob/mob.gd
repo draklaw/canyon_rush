@@ -1,11 +1,16 @@
 extends KinematicBody2D
 
-export var speed: float = 64
-var rng
+
+export var hp: float = 25
+export var speed: float = 192
+
+
 var wiggle = 0.5
 
+
 func _ready() -> void:
-	rng = RandomNumberGenerator.new()
+	pass
+
 
 func _physics_process(delta: float) -> void:
 	var offset = Vector2()
@@ -26,3 +31,9 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func deal_damage(damage: float) -> void:
+	hp -= damage
+	if hp <= 0:
+		queue_free()

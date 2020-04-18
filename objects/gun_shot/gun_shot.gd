@@ -2,6 +2,7 @@ extends Area2D
 
 
 export var velocity: float = 1024
+export var damage: float = 10
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,5 +16,6 @@ func _physics_process(delta: float) -> void:
 
 
 func on_hit_body(body: Node) -> void:
-	# TODO: Warn `body`
+	if body.has_method("deal_damage"):
+		body.call("deal_damage", damage)
 	queue_free()
