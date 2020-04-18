@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		var shot = gun_shot.instance()
 		shot.position = position
 		shot.look_at(target)
+		shot.add_to_group("shoots")
 		shot_layer.add_child(shot)
 
 	._physics_process(delta)
