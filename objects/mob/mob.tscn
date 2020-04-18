@@ -3,7 +3,7 @@
 [ext_resource path="res://objects/mob/icon.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 65
+radius = 65.0
 
 [node name="mob" type="KinematicBody2D"]
 
