@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/mob/mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/mob_spawn.gd" type="Script" id=4]
+[ext_resource path="res://objects/gui/gui.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 163.821, 353.319 )
@@ -29,3 +30,6 @@ shape = SubResource( 1 )
 
 [node name="pc" parent="." instance=ExtResource( 2 )]
 position = Vector2( 492.942, 351.175 )
+
+[node name="gui" parent="." instance=ExtResource( 5 )]
+[connection signal="took_damage" from="pc" to="gui" method="set_pc_health"]

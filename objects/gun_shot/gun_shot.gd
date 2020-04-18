@@ -7,6 +7,7 @@ export var damage: float = 10
 
 func _ready() -> void:
 	connect("body_entered", self, "on_hit_body")
+	self.add_to_group("shoots")
 
 
 func _physics_process(delta: float) -> void:

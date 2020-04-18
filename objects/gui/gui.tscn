@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/gui/gui.gd" type="Script" id=1]
+
+[node name="gui" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 24
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main_layout" type="VBoxContainer" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 1896.0
+margin_bottom = 1056.0
+
+[node name="top_bar" type="HBoxContainer" parent="main_layout"]
+margin_right = 1872.0
+margin_bottom = 14.0
+
+[node name="health_bar" type="ProgressBar" parent="main_layout/top_bar"]
+margin_right = 200.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 200, 0 )
+step = 1.0
+value = 100.0
+rounded = true
