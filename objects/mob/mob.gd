@@ -32,25 +32,25 @@ func _ready() -> void:
 	self.stat = 80 + randi() % 40;
 
 func f(l):
-	return 
+	return
 
 func _physics_process(delta: float) -> void:
 	var offset = Vector2(0,0)
-	
+
 	var pc = $"/root/world/pc"
 	var sep = Vector2(0,0)
 	if (pc):
 		sep = (pc.position - position)
-	
+
 	if type == MASHER and sep.length() < 500 * stat/100:
 		offset += 3 * sep
 	if type == RUNNER and sep.length() < 300 * stat/100:
 		offset -= sep
-	
+
 	offset.x -= 1000 if type == RUSHER else 200
-	
+
 	offset = offset.normalized() * speed * (1.5 if type == FASTER else 1)
-	
+
 	if type == DASHER:
 		if stat < 100:
 			stat += DASH_REGEN
@@ -60,9 +60,9 @@ func _physics_process(delta: float) -> void:
 				if sep.length() < DASH_RANGE:
 					offset = 60*DASH_RANGE * sep.rotated(PI/2 if randi()%2 else -PI/2).normalized()
 					stat -= DASH_COST
-	
+
 	move_and_slide(offset)
-	
+
 	._physics_process(delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

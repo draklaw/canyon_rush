@@ -4,17 +4,16 @@ extends Character
 export var speed: float = 256
 
 
-#onready var shot_layer = get_node("/root/world/shots")
-#var gun_shot = preload("res://objects/gun_shot/gun_shot.tscn")
-
 onready var gun: Weapon = $gun
 onready var machine_gun: Weapon = $machine_gun
+onready var shotgun: Weapon = $shotgun
 
 var weapon: Weapon
 
 
 func _ready() -> void:
 	weapon = machine_gun
+	connect("took_damage", self, "on_took_damage")
 
 
 func _physics_process(delta: float) -> void:
@@ -51,3 +50,7 @@ func _physics_process(delta: float) -> void:
 		weapon.reload()
 
 	._physics_process(delta)
+
+
+func on_took_damage(damage):
+	$damage_stream.play()
