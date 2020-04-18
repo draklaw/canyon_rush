@@ -1,17 +1,10 @@
-extends KinematicBody2D
+extends Character
 
-
-export var max_hp: float = 100
-export var hp: float = 100
-
-export var recovery_time: float = 0
 
 export var speed: float = 256
 
 
-var remaining_recovery_time = 0
-
-onready var shot_layer = get_node("/root/world")
+onready var shot_layer = get_node("/root/world/shots")
 var gun_shot = preload("res://objects/gun_shot/gun_shot.tscn")
 
 
@@ -53,28 +46,4 @@ func _physics_process(delta: float) -> void:
 		shot.look_at(target)
 		shot_layer.add_child(shot)
 
-	### DAMAGE & RECOVERY
-
-	remaining_recovery_time -= delta
-
-	for i in range(get_slide_count()):
-		var collider = get_slide_collision(i).collider
-		var damage_on_hit = collider.get("damage_on_hit")
-		if damage_on_hit:
-			take_damage(damage_on_hit)
-
-
-func take_damage(damage: float):
-	if damage <= 0 or remaining_recovery_time > 0:
-		return
-
-	hp -= damage
-	print("take_damage %f: %f" % [damage, hp])
-	remaining_recovery_time = recovery_time
-
-	if hp <= 0:
-		die()
-
-
-func die():
-	queue_free()
+	._physics_process(delta)

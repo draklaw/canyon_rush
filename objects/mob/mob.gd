@@ -1,10 +1,7 @@
-extends KinematicBody2D
+extends Character
 
 
-export var hp: float = 25
 export var speed: float = 192
-
-export var damage_on_hit: float = 10
 
 
 var wiggle = 0.5
@@ -30,12 +27,4 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide(offset)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func take_damage(damage: float) -> void:
-	hp -= damage
-	if hp <= 0:
-		queue_free()
+	._physics_process(delta)

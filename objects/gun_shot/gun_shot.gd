@@ -5,7 +5,6 @@ export var velocity: float = 1024
 export var damage: float = 10
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect("body_entered", self, "on_hit_body")
 
@@ -16,6 +15,6 @@ func _physics_process(delta: float) -> void:
 
 
 func on_hit_body(body: Node) -> void:
-	if body.has_method("take_damage"):
+	if body is Character:
 		body.call("take_damage", damage)
 	queue_free()

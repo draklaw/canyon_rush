@@ -8,6 +8,9 @@ radius = 32.0
 
 [node name="mob" type="KinematicBody2D"]
 script = ExtResource( 2 )
+max_hp = 25.0
+hp = 25.0
+damage_on_hit = 25.0
 
 [node name="icon" type="Sprite" parent="."]
 rotation = 4.71239
