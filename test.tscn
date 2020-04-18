@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/mob/mob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/mob/mob.gd" type="Script" id=4]
 
 [node name="world" type="Node2D"]
 
@@ -12,3 +14,7 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="pc" parent="." instance=ExtResource( 2 )]
 position = Vector2( 492.942, 351.175 )
+
+[node name="mob" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2400.2, 541.291 )
+script = ExtResource( 4 )
