@@ -6,14 +6,13 @@ var wiggle = 0.5
 
 func _ready() -> void:
 	rng = RandomNumberGenerator.new()
-	randomize()
 
 func _physics_process(delta: float) -> void:
 	var offset = Vector2()
 
 	offset.x -= 1
 
-	wiggle += (rng.randf()-0.5)/20
+	wiggle += (randf()-0.5)/20
 	wiggle = clamp(0, wiggle, 1)
 	if wiggle < 0.15:
 		offset.y -= 1
