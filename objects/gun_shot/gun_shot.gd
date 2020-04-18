@@ -16,6 +16,6 @@ func _physics_process(delta: float) -> void:
 
 
 func on_hit_body(body: Node) -> void:
-	if body.has_method("deal_damage"):
-		body.call("deal_damage", damage)
+	if body.has_method("take_damage"):
+		body.call("take_damage", damage)
 	queue_free()
