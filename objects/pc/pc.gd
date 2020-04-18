@@ -4,12 +4,17 @@ extends Character
 export var speed: float = 256
 
 
-onready var shot_layer = get_node("/root/world/shots")
-var gun_shot = preload("res://objects/gun_shot/gun_shot.tscn")
+#onready var shot_layer = get_node("/root/world/shots")
+#var gun_shot = preload("res://objects/gun_shot/gun_shot.tscn")
+
+onready var gun: Weapon = $gun
+onready var machine_gun: Weapon = $machine_gun
+
+var weapon: Weapon
 
 
 func _ready() -> void:
-	pass
+	weapon = machine_gun
 
 
 func _physics_process(delta: float) -> void:
@@ -33,17 +38,16 @@ func _physics_process(delta: float) -> void:
 	### ORIENTATION
 
 	var target = get_viewport().get_mouse_position()
-	var view_vec = (target - position).normalized()
-	var view_vec_orth = Vector2(view_vec.y, -view_vec.x)
-
-	transform = Transform2D(view_vec_orth, -view_vec, position)
+	look_at(target)
 
 	### WEAPONS
 
 	if Input.is_action_just_pressed("p1_shoot"):
-		var shot = gun_shot.instance()
-		shot.position = position
-		shot.look_at(target)
-		shot_layer.add_child(shot)
+		weapon.start_shooting()
+	elif Input.is_action_just_released("p1_shoot"):
+		weapon.stop_shooting()
+
+	if Input.is_action_just_pressed("p1_reload"):
+		weapon.reload()
 
 	._physics_process(delta)
