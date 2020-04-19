@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mob.png-4e644252d81c6817b474d436104d51ac.stex"
+path="res://.import/sniper.png-9555f09b0b64ef57704715820278b798.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/mob/mob.png"
-dest_files=[ "res://.import/mob.png-4e644252d81c6817b474d436104d51ac.stex" ]
+source_file="res://objects/mob/sniper.png"
+dest_files=[ "res://.import/sniper.png-9555f09b0b64ef57704715820278b798.stex" ]
 
 [params]
 
