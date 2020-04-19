@@ -1,13 +1,15 @@
 extends Area2D
 
 
+enum { LAZOR, SPIT }
+export var type = LAZOR
 export var velocity: float = 1024
 export var damage: float = 10
 
 
 func _ready() -> void:
 	connect("body_entered", self, "on_hit_body")
-	self.add_to_group("shoots")
+	add_to_group("shoots")
 
 
 func _physics_process(delta: float) -> void:
