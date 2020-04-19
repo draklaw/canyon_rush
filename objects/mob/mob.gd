@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 
 	if type == MASHER and tobot.length() < MASH_RANGE * stat/100:
 		move += 3 * tobot
+	elif type != SNIPER and tobot.length() < 200:
+		move += 3 * tobot
 	if type == FLEEER and tobot.length() < FLEE_RANGE * stat/100:
 		move -= tobot
 
