@@ -11,7 +11,20 @@ enum Mode {
 }
 
 
+enum PlayerInput {
+	DISABLED = -2,
+	KEYBOARD = -1,
+}
+
+
 export var mode: int = Mode.NORMAL
+
+var players_input = [
+	PlayerInput.KEYBOARD,
+	PlayerInput.DISABLED,
+	PlayerInput.DISABLED,
+	PlayerInput.DISABLED,
+]
 
 var enter_pressed: bool = false
 

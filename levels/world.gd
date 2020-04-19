@@ -22,7 +22,13 @@ var remaining_time: float
 onready var main = $"/root/main"
 onready var gui = $gui
 onready var human = $human
-onready var pc = $pc
+
+onready var pcs = [
+	$players/pc_1,
+	$players/pc_2,
+	$players/pc_3,
+	$players/pc_4,
+]
 
 
 func _ready() -> void:
@@ -40,7 +46,20 @@ func _ready() -> void:
 		remaining_time = 0
 	emit_signal("remaining_time_changed", remaining_time)
 
-	pc.set_weapon_index(PlayerCharacter.WeaponType.MACHINE_GUN)
+	for i in pcs.size():
+		var pc = pcs[i]
+		var input = main.players_input[i]
+		var enabled = input != Main.PlayerInput.DISABLED
+
+		if enabled:
+			pc.controller = PlayerController.new()
+			pc.controller.setup(get_viewport(), pc, input)
+
+			pc.set_weapon_index(PlayerCharacter.WeaponType.MACHINE_GUN)
+		else:
+			pc.free()
+
+		gui.set_player_info_visible(i, enabled)
 
 	for node in get_children():
 		node.pause_mode = Node.PAUSE_MODE_STOP

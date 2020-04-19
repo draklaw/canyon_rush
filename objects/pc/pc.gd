@@ -11,6 +11,8 @@ enum WeaponType {
 }
 
 
+export var player_index: int = 0
+
 export var speed: float = 256
 export var dodge_speed: float = 900
 export var dodge_time: float = 0.15
@@ -85,7 +87,7 @@ func get_active_weapon() -> Weapon:
 func set_weapon_index(weapon_index_: int):
 	get_active_weapon().stop_shooting()
 	weapon_index = weapon_index_
-	emit_signal("weapon_changed", get_active_weapon())
+	emit_signal("weapon_changed", player_index, get_active_weapon())
 
 
 func on_took_damage(_damage):

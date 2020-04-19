@@ -89,11 +89,31 @@ shape = SubResource( 7 )
 [node name="human" parent="." instance=ExtResource( 5 )]
 position = Vector2( 145.018, 577.629 )
 
-[node name="pc" parent="." instance=ExtResource( 7 )]
-position = Vector2( 320.869, 518.72 )
+[node name="players" type="Node2D" parent="."]
+
+[node name="pc_1" parent="players" instance=ExtResource( 7 )]
+position = Vector2( 312.507, 534.609 )
+
+[node name="pc_2" parent="players" instance=ExtResource( 7 )]
+position = Vector2( 313.343, 619.905 )
+player_index = 1
+
+[node name="pc_3" parent="players" instance=ExtResource( 7 )]
+position = Vector2( 312.507, 447.64 )
+player_index = 2
+
+[node name="pc_4" parent="players" instance=ExtResource( 7 )]
+position = Vector2( 289.092, 599.835 )
+player_index = 3
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
 [connection signal="remaining_time_changed" from="." to="gui" method="set_timer"]
 [connection signal="took_damage" from="human" to="gui" method="set_human_health"]
-[connection signal="took_damage" from="pc" to="gui" method="set_pc_health"]
-[connection signal="weapon_changed" from="pc" to="gui" method="set_weapon"]
+[connection signal="took_damage" from="players/pc_1" to="gui" method="set_pc_health"]
+[connection signal="weapon_changed" from="players/pc_1" to="gui" method="set_weapon"]
+[connection signal="took_damage" from="players/pc_2" to="gui" method="set_pc_health"]
+[connection signal="weapon_changed" from="players/pc_2" to="gui" method="set_weapon"]
+[connection signal="took_damage" from="players/pc_3" to="gui" method="set_pc_health"]
+[connection signal="weapon_changed" from="players/pc_3" to="gui" method="set_weapon"]
+[connection signal="took_damage" from="players/pc_4" to="gui" method="set_pc_health"]
+[connection signal="weapon_changed" from="players/pc_4" to="gui" method="set_weapon"]

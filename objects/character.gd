@@ -33,7 +33,7 @@ func take_damage(damage: float):
 	hp -= damage
 	remaining_recovery_time = recovery_time
 
-	emit_signal("took_damage", hp)
+	emit_signal("took_damage", self, hp)
 
 	if hp <= 0:
 		die()

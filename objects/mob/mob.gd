@@ -47,6 +47,8 @@ var attack: float = 100
 var shot = preload("res://objects/gun_shot/gun_shot.tscn")
 var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
+onready var pc_group = $"/root/world/players"
+
 
 func set_mobtype (ntype: int) -> void:
 	type = ntype
@@ -61,11 +63,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var move = Vector2(0,0)
+	var pc = null
 	var tobot = Vector2(0,0)
 	var tohuman = Vector2(0,0)
 
-	if has_node("/root/world/pc"):
-		tobot = $"/root/world/pc".position - position
+	for candidate in pc_group.get_children():
+		var vec = candidate.position - position
+		if not pc or vec.length_squared() < tobot.length_squared():
+			pc = candidate
+			tobot = vec
 
 	if type == MASHER and tobot.length() < MASH_RANGE * stat/100:
 		move += 3 * tobot

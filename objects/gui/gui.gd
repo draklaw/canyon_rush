@@ -1,8 +1,16 @@
 extends Control
 
 
-onready var health_bar: ProgressBar = $main_layout/players_row/player_info_1/health_bar
-onready var ammo_bar: AmmoBar = $main_layout/players_row/player_info_1/ammo_bar
+#onready var health_bar: ProgressBar = $main_layout/players_row/player_info_1/health_bar
+#onready var ammo_bar: AmmoBar = $main_layout/players_row/player_info_1/ammo_bar
+
+onready var player_info = [
+	$main_layout/players_row/player_info_1,
+	$main_layout/players_row/player_info_2,
+	$main_layout/players_row/player_info_3,
+	$main_layout/players_row/player_info_4,
+]
+
 onready var human_bar: ProgressBar = $main_layout/human_row/human_bar
 onready var timer: Label = $main_layout/human_row/evac_bar/timer
 
@@ -19,11 +27,15 @@ const human_sprite = [
 ]
 
 
-func set_pc_health(hp):
-	health_bar.value = hp
+func set_player_info_visible(index: int, visible: bool):
+	player_info[index].visible = visible
 
 
-func set_human_health(hp):
+func set_pc_health(player: Node, hp: float):
+	player_info[player.player_index].get_node("health_bar").value = hp
+
+
+func set_human_health(human_: Node, hp):
 	var points = ceil(hp / 25)
 	human_bar.texture = human_sprite[points]
 
@@ -36,7 +48,9 @@ func set_timer(time: float):
 	timer.text = "%02d:%02d" % [minutes, seconds]
 
 
-func set_weapon(weapon_: Weapon):
+func set_weapon(player_index: int, weapon_: Weapon):
+	var ammo_bar = player_info[player_index].get_node("ammo_bar")
+
 	if weapon:
 		weapon.disconnect("ammo_count_changed", ammo_bar, "set_value")
 

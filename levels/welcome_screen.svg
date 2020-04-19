@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8272082"
-     inkscape:cx="1135.7429"
-     inkscape:cy="616.83057"
+     inkscape:zoom="1.2920313"
+     inkscape:cx="1035.7843"
+     inkscape:cy="588.49775"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -67,14 +67,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="27.85252"
-       y="50.783028"
+       x="75.202759"
+       y="55.127087"
        id="text817"><tspan
          sodipodi:role="line"
          id="tspan815"
-         x="27.85252"
-         y="50.783028"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.34444427px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;fill-opacity:1;stroke-width:0.26458332">Game title</tspan></text>
+         x="75.202759"
+         y="55.127087"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.40017319px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;fill-opacity:1;stroke-width:0.26458332">Rush</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -288,30 +288,29 @@
    style="fill:#e15a5a;fill-opacity:1"
    id="tspan945">Draklaw</tspan></tspan></text>
     <g
-       transform="translate(-44.309401,33.159649)"
-       id="g1588">
+       id="g1642">
       <rect
          style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect1580"
          width="13.617929"
          height="18.737452"
-         x="367.27454"
-         y="71.433823"
+         x="322.96515"
+         y="104.59348"
          ry="5.2155151"
          rx="4.7449012" />
       <path
          style="fill:none;stroke:#f8f8f8;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 367.43497,79.579834 13.24938,-0.0724"
+         d="m 323.12557,112.73948 13.24938,-0.0724"
          id="path1582"
          inkscape:connector-curvature="0" />
       <path
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 374.09585,68.611085 v 10.896349 l -6.66088,0.0724 -0.0362,-3.366645 1.01361,-2.93224 2.17203,-1.629022 3.43905,-0.181002 0.0724,8.036509"
+         d="m 329.78647,101.77073 v 10.89635 l 6.57791,0.0724 0.0358,-3.36664 -1.00098,-2.93224 -2.14498,-1.62902 -3.39621,-0.18101 -0.0715,8.03651"
          id="path1584"
          inkscape:connector-curvature="0" />
       <path
          style="fill:none;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 374.09585,79.507434 V 68.82829"
+         d="M 329.78645,112.66708 V 101.98794"
          id="path1586"
          inkscape:connector-curvature="0" />
     </g>
