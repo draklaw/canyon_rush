@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/mob/mob.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/mob_spawn.gd" type="Script" id=4]
-[ext_resource path="res://objects/gui/gui.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/human/human.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/mob/mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/mob_spawn.gd" type="Script" id=3]
+[ext_resource path="res://levels/world.gd" type="Script" id=4]
+[ext_resource path="res://objects/human/human.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/gui/gui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 163.821, 353.319 )
 
 [node name="world" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -22,19 +24,20 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="mob_spawn" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
-script = ExtResource( 4 )
-mob = ExtResource( 3 )
+script = ExtResource( 3 )
+mob = ExtResource( 2 )
 
 [node name="spawn_shape" type="CollisionShape2D" parent="mob_spawn"]
 position = Vector2( 2284.78, 531.679 )
 shape = SubResource( 1 )
 
-[node name="human" parent="." instance=ExtResource( 6 )]
+[node name="human" parent="." instance=ExtResource( 5 )]
 position = Vector2( 162.623, 522.034 )
 
-[node name="pc" parent="." instance=ExtResource( 2 )]
-position = Vector2( 492.942, 351.175 )
+[node name="pc" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320.869, 518.72 )
 
-[node name="gui" parent="." instance=ExtResource( 5 )]
+[node name="gui" parent="." instance=ExtResource( 6 )]
+[connection signal="remaining_time_changed" from="." to="gui" method="set_timer"]
 [connection signal="took_damage" from="human" to="gui" method="set_human_health"]
 [connection signal="took_damage" from="pc" to="gui" method="set_pc_health"]

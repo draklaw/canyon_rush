@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ld46"
-run/main_scene="res://test.tscn"
+run/main_scene="res://levels/world.tscn"
 config/icon="res://objects/pc/icon.png"
 
 [autoload]
@@ -41,6 +41,11 @@ window/size/height=1080
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gui]
+
+theme/use_hidpi=true
+theme/custom_font="res://objects/gui/font.tres"
 
 [input]
 
