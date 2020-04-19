@@ -9,5 +9,5 @@ static func sum (v: Array):
 static func interpol (v1: Array, v2: Array, l: float) -> Array:
 	var vr = []
 	for i in range(v1.size()):
-		vr.append(l*v1[i] + (1-l)*v2[i])
+		vr.append((1-l)*v1[i] + l*v2[i])
 	return vr

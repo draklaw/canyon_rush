@@ -62,6 +62,7 @@ func _ready() -> void:
 	$sprite.frames = sprites[type]
 
 func _physics_process(delta: float) -> void:
+	var _ignore
 	var move = Vector2(0,0)
 	var pc = null
 	var tobot = Vector2(0,0)
@@ -75,6 +76,8 @@ func _physics_process(delta: float) -> void:
 
 	if type == MASHER and tobot.length() < MASH_RANGE * stat/100:
 		move += 3 * tobot
+	elif type != SNIPER and tobot.length() < 200:
+		move += 3 * tobot
 	if type == FLEEER and tobot.length() < FLEE_RANGE * stat/100:
 		move -= tobot
 
@@ -86,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		move.x -= speed
 
-	move = move.normalized() * speed * (FAST_FACTOR if type == FASTER else 1)
+	move = move.normalized() * speed * (FAST_FACTOR if type == FASTER else 1.0)
 
 	if type == DASHER:
 		if stat < 100:
@@ -98,7 +101,7 @@ func _physics_process(delta: float) -> void:
 					move = 60*DASH_RANGE * toshot.rotated(PI/2 if randi()%2 else -PI/2).normalized()
 					stat -= DASH_COST
 
-	move_and_slide(move)
+	_ignore = move_and_slide(move)
 
 	attack -= 1
 	if type == SNIPER:
@@ -116,14 +119,15 @@ func _physics_process(delta: float) -> void:
 		for i in range(get_slide_count()):
 			var collider = get_slide_collision(i).collider
 			if attack < 0 and collider is Character and not collider.i_am_a_mob_instance:
+				$"sprite".animation = "attack"
+				_ignore = $"sprite".connect("animation_finished", self, "back2walk")
 				collider.take_damage(damage_on_hit)
 				attack = 100
 
 	._physics_process(delta)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func back2walk ():
+	$"sprite".animation = "walk"
 
 func take_damage(damage: float) -> void:
 	hp -= damage
