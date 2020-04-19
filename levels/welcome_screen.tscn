@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/welcome_screen.png" type="Texture" id=1]
+[ext_resource path="res://objects/gui/font_big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://levels/play_button.gd" type="Script" id=3]
+
+[node name="welcome_screen" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="."]
+margin_left = 146.248
+margin_top = 296.192
+margin_right = 600.248
+margin_bottom = 777.192
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play_easy_button" type="Button" parent="buttons"]
+margin_right = 454.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Play easy"
+script = ExtResource( 3 )
+mode = 0
+
+[node name="play_medium_button" type="Button" parent="buttons"]
+margin_top = 126.0
+margin_right = 454.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Play normal"
+script = ExtResource( 3 )
+
+[node name="play_hard_button" type="Button" parent="buttons"]
+margin_top = 252.0
+margin_right = 454.0
+margin_bottom = 354.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Play hard"
+script = ExtResource( 3 )
+mode = 2
+
+[node name="endless_button" type="Button" parent="buttons"]
+margin_top = 378.0
+margin_right = 454.0
+margin_bottom = 481.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Endless mode"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+mode = 3
