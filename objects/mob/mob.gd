@@ -30,6 +30,16 @@ var attack = 100
 var shot = preload("res://objects/gun_shot/gun_shot.tscn")
 var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
+const sprites = [
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/tanker_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/sniper_anims.tres"),
+]
+
 func _ready() -> void:
 	add_to_group("hive")
 	i_am_a_mob_instance = true
@@ -37,6 +47,7 @@ func _ready() -> void:
 	stat = 80 + randi() % 40;
 	if type == TANKER:
 		hp += stat
+	$sprite.frames = sprites[type]
 
 func _physics_process(delta: float) -> void:
 	var move = Vector2(0,0)
