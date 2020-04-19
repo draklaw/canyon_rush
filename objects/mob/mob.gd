@@ -1,8 +1,13 @@
 extends Character
 
+class_name Mob
+
 export var speed: float = 192
 
+const trash: Array = [20, 4,  0,  2, 10,  1,  0,  0]
+const leet:  Array = [ 0, 5, 20, 20,  0, 20, 10, 30]
 enum {
+	BUGGER, # Nothing special
 	RUSHER, # Eyes on the prize
 	FASTER, # Gotta go fast
 	MASHER, # Go for the eyes
@@ -10,33 +15,35 @@ enum {
 	TANKER, # Shrug it off
 	DASHER, # Can't touch this
 	SNIPER, # Boom headshot
-	TYPES
+	MOB_TYPES
 }
 
-const RUSH_FACTOR = 5
-const FAST_FACTOR = 1.5
-const MASH_RANGE = 600
-const FLEE_RANGE = 300
-const DASH_REGEN = 0.3
-const DASH_RANGE = 80
-const DASH_COST = 80
-const SNIP_CHARGE = 1
-const SNIP_DAMAGE = 25
+const RUSH_FACTOR: float = 5.0
+const FAST_FACTOR: float = 1.5
+const MASH_RANGE: float = 600.0
+const FLEE_RANGE: float = 300.0
+const DASH_REGEN: float = 1.0
+const DASH_RANGE: float = 80.0
+const DASH_COST: float = 80.0
+const SNIP_CHARGE: float = 1.0
+const SNIP_DAMAGE: float = 25.0
 
-var type = 0
-var stat = 100
-var attack = 100
+var type: int = 0
+var stat: float = 100
+var attack: float = 100
 
 var shot = preload("res://objects/gun_shot/gun_shot.tscn")
 var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
-func _ready() -> void:
-	add_to_group("hive")
-	i_am_a_mob_instance = true
-	type = randi() % TYPES;
+func set_mobtype (ntype: int) -> void:
+	type = ntype
 	stat = 80 + randi() % 40;
 	if type == TANKER:
 		hp += stat
+
+func _ready() -> void:
+	add_to_group("hive")
+	i_am_a_mob_instance = true
 
 func _physics_process(delta: float) -> void:
 	var move = Vector2(0,0)

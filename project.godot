@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/main.gd"
 }, {
+"base": "Character",
+"class": "Mob",
+"language": "GDScript",
+"path": "res://objects/mob/mob.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://utils.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "AmmoBar": "",
 "Character": "",
 "Main": "",
+"Mob": "",
+"Utils": "",
 "Weapon": ""
 }
 
