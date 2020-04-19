@@ -3,6 +3,7 @@ extends Node2D
 class_name Weapon
 
 
+export var weapon_index: int = 0
 export var damage: float = 10
 export var ammo_capacity: int = 0
 export var reload_delay: float = 1

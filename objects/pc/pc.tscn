@@ -37,29 +37,10 @@ rotation = 1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
-
-[node name="gun" type="Node2D" parent="."]
-position = Vector2( 30.7692, 0.34964 )
-script = ExtResource( 4 )
-ammo_capacity = 8
-reload_delay = 0.5
-shot = ExtResource( 3 )
-
-[node name="machine_gun" type="Node2D" parent="."]
-position = Vector2( 31.4685, 0 )
-script = ExtResource( 4 )
-damage = 5.0
-ammo_capacity = 30
-reload_delay = 0.5
-burst = 0
-shot_delay = 0.1
-scattering = 5.0
-shot = ExtResource( 3 )
 
 [node name="shotgun" type="Node2D" parent="."]
 position = Vector2( 31.4685, 0 )
@@ -71,6 +52,18 @@ shot_count = 12
 shot_delay = 0.8
 scattering = 12.0
 shot_speed_var = 0.1
+shot = ExtResource( 3 )
+
+[node name="machine_gun" type="Node2D" parent="."]
+position = Vector2( 31.4685, 0 )
+script = ExtResource( 4 )
+weapon_index = 1
+damage = 5.0
+ammo_capacity = 30
+reload_delay = 0.5
+burst = 0
+shot_delay = 0.1
+scattering = 5.0
 shot = ExtResource( 3 )
 
 [node name="shot_stream" type="AudioStreamPlayer2D" parent="."]

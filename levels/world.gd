@@ -40,7 +40,7 @@ func _ready() -> void:
 		remaining_time = 0
 	emit_signal("remaining_time_changed", remaining_time)
 
-	pc.set_weapon_index(1)
+	pc.set_weapon_index(PlayerCharacter.WeaponType.MACHINE_GUN)
 
 	for node in get_children():
 		node.pause_mode = Node.PAUSE_MODE_STOP

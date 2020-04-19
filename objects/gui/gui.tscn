@@ -1,12 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/gui/gui.gd" type="Script" id=1]
-[ext_resource path="res://objects/gui/hb_middle.png" type="Texture" id=2]
-[ext_resource path="res://objects/gui/hb_under.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/player_info.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/gui/human_bar_4.tres" type="Texture" id=4]
 [ext_resource path="res://objects/gui/font_big.tres" type="DynamicFont" id=5]
-[ext_resource path="res://objects/gui/ammo_bar.gd" type="Script" id=6]
-[ext_resource path="res://objects/gui/ammo.png" type="Texture" id=7]
 [ext_resource path="res://objects/gui/timer_label.gd" type="Script" id=8]
 
 [node name="gui" type="Control"]
@@ -29,22 +26,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="health_bar" type="TextureProgress" parent="main_layout"]
-margin_top = 882.0
+[node name="players_row" type="HBoxContainer" parent="main_layout"]
 margin_right = 1872.0
-margin_bottom = 906.0
-value = 100.0
-rounded = true
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 2 )
+margin_bottom = 64.0
 
-[node name="ammo_bar" type="Control" parent="main_layout"]
-margin_top = 914.0
+[node name="player_info_1" parent="main_layout/players_row" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_2" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 470.0
+margin_top = 0.0
+margin_right = 932.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_3" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 626.0
+margin_top = 0.0
+margin_right = 1244.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_4" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 940.0
+margin_top = 0.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="spacer" type="Control" parent="main_layout"]
+margin_top = 72.0
 margin_right = 1872.0
 margin_bottom = 946.0
-script = ExtResource( 6 )
-texture = ExtResource( 7 )
-max_value = 30
+size_flags_vertical = 3
 
 [node name="human_row" type="HBoxContainer" parent="main_layout"]
 margin_top = 954.0

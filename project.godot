@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/main.gd"
 }, {
+"base": "Character",
+"class": "PlayerCharacter",
+"language": "GDScript",
+"path": "res://objects/pc/pc.gd"
+}, {
 "base": "Object",
 "class": "PlayerController",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "AmmoBar": "",
 "Character": "",
 "Main": "",
+"PlayerCharacter": "",
 "PlayerController": "",
 "Weapon": ""
 }

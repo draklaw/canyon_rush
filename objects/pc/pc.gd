@@ -1,5 +1,15 @@
 extends Character
 
+class_name PlayerCharacter
+
+
+enum WeaponType {
+	SHOTGUN,
+	MACHINE_GUN,
+	ROCKET_LAUNCHER,
+	RAILGUN,
+}
+
 
 export var speed: float = 256
 export var dodge_speed: float = 900
@@ -7,13 +17,12 @@ export var dodge_time: float = 0.15
 export var dodge_recovery: float = 0.5
 
 
-onready var gun: Weapon = $gun
 onready var machine_gun: Weapon = $machine_gun
 onready var shotgun: Weapon = $shotgun
-onready var weapons = [gun, machine_gun, shotgun]
+onready var weapons = [shotgun, machine_gun]
 
 var controller = null
-var weapon_index = 1 setget set_weapon_index
+var weapon_index = WeaponType.MACHINE_GUN setget set_weapon_index
 var remaining_dodge_time: float = 0
 var dodge_direction: Vector2
 

@@ -1,10 +1,10 @@
 extends Control
 
 
-onready var health_bar: ProgressBar = $main_layout/health_bar
+onready var health_bar: ProgressBar = $main_layout/players_row/player_info_1/health_bar
+onready var ammo_bar: AmmoBar = $main_layout/players_row/player_info_1/ammo_bar
 onready var human_bar: ProgressBar = $main_layout/human_row/human_bar
 onready var timer: Label = $main_layout/human_row/evac_bar/timer
-onready var ammo_bar: AmmoBar = $main_layout/ammo_bar
 
 
 var weapon: Weapon
@@ -43,6 +43,7 @@ func set_weapon(weapon_: Weapon):
 	weapon = weapon_
 
 	if weapon:
+		ammo_bar.weapon_index = weapon.weapon_index
 		ammo_bar.max_value = weapon.ammo_capacity
 		ammo_bar.value = weapon.ammo_count
 		weapon.connect("ammo_count_changed", ammo_bar, "set_value")
