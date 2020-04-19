@@ -2,37 +2,39 @@ extends Character
 
 export var speed: float = 192
 
-# Behavior :
-# 1. Clear shots (dash).
-# 2. Go west.
-# 3. Clear walls
-# 4. Clear PC.
-# 5. Flock hive.
-# 6. Wiggle ?
-
 enum {
- RUSHER, # Eyes on the prize
- FASTER, # Gotta go fast
- MASHER, # Go for the eyes
- RUNNER, # Better part of valor
- DASHER, # Can't touch this
- TYPES
+	RUSHER, # Eyes on the prize
+	FASTER, # Gotta go fast
+	MASHER, # Go for the eyes
+	FLEEER, # Better part of valor
+	TANKER, # Shrug it off
+	DASHER, # Can't touch this
+	SNIPER, # Boom headshot
+	TYPES
 }
 
-const DASH_REGEN = 0.3;
-const DASH_RANGE = 80;
-const DASH_COST = 80;
+const RUSH_FACTOR = 5
+const FAST_FACTOR = 1.5
+const MASH_RANGE = 600
+const FLEE_RANGE = 300
+const DASH_REGEN = 0.3
+const DASH_RANGE = 80
+const DASH_COST = 80
+const SNIP_CHARGE = 1
+const SNIP_DAMAGE = 25
 
-var type;
-var stat;
+var type
+var stat
+
+var shot = preload("res://objects/gun_shot/gun_shot.tscn")
+var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
 func _ready() -> void:
-	self.add_to_group("hive")
-	self.type = randi() % TYPES;
-	self.stat = 80 + randi() % 40;
-
-func f(l):
-	return
+	add_to_group("hive")
+	type = randi() % TYPES;
+	stat = 80 + randi() % 40;
+	if type == TANKER:
+		hp += stat
 
 func _physics_process(delta: float) -> void:
 	var offset = Vector2(0,0)
@@ -42,14 +44,14 @@ func _physics_process(delta: float) -> void:
 		var pc = $"/root/world/pc"
 		sep = (pc.position - position)
 
-	if type == MASHER and sep.length() < 500 * stat/100:
+	if type == MASHER and sep.length() < MASH_RANGE * stat/100:
 		offset += 3 * sep
-	if type == RUNNER and sep.length() < 300 * stat/100:
+	if type == FLEEER and sep.length() < FLEE_RANGE * stat/100:
 		offset -= sep
 
-	offset.x -= 1000 if type == RUSHER else 200
+	offset.x -= speed * (RUSH_FACTOR if type == RUSHER else 1)
 
-	offset = offset.normalized() * speed * (1.5 if type == FASTER else 1)
+	offset = offset.normalized() * speed * (FAST_FACTOR if type == FASTER else 1)
 
 	if type == DASHER:
 		if stat < 100:
@@ -62,6 +64,18 @@ func _physics_process(delta: float) -> void:
 					stat -= DASH_COST
 
 	move_and_slide(offset)
+
+	if type == SNIPER:
+		stat -= SNIP_CHARGE
+		if stat < 0:
+			stat = 100
+			var acid = shot.instance()
+			acid.get_node("gun_shot").texture = acid_pic
+			acid.collision_mask = 0x3
+			acid.damage = SNIP_DAMAGE
+			acid.position = position
+			acid.rotation = sep.angle()
+			get_node("/root/world/shots").add_child(acid)
 
 	for i in range(get_slide_count()):
 		var collider = get_slide_collision(i).collider

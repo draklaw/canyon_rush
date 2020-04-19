@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gun_shot.png-e42f74920ae3af604ae1bd28b0f8f8f0.stex"
+path="res://.import/acid_shot.png-792ca580bc9119231648b9c44d46bd2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/gun_shot/gun_shot.png"
-dest_files=[ "res://.import/gun_shot.png-e42f74920ae3af604ae1bd28b0f8f8f0.stex" ]
+source_file="res://objects/gun_shot/acid_shot.png"
+dest_files=[ "res://.import/acid_shot.png-792ca580bc9119231648b9c44d46bd2a.stex" ]
 
 [params]
 
