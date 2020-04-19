@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Weapon
 
@@ -7,8 +7,11 @@ export var damage: float = 10
 export var ammo_capacity: int = 0
 export var reload_delay: float = 1
 export var burst: int = 1
+export var shot_count: int = 1
 export var shot_delay: float = 0.2
 export var scattering: float = 0
+export var shot_speed: float = 1024
+export var shot_speed_var: float = 0
 
 export var shot: PackedScene
 
@@ -29,6 +32,7 @@ func _ready() -> void:
 
 func start_shooting():
 	shooting = true
+	time_before_next_shot = max(time_before_next_shot, 0)
 
 
 func stop_shooting():
@@ -52,15 +56,19 @@ func _physics_process(delta: float) -> void:
 	shoot_once()
 	ammo_count -= 1
 	shots_remaining -= 1
-	time_before_next_shot = shot_delay
+	time_before_next_shot += shot_delay
 
 
 func shoot_once():
-	var shot = _spawn_shot()
-	shot.damage = damage
-	shot.position = owner.position
-	shot.rotation = owner.rotation + (randf() - .5) * deg2rad(scattering)
-	shot_layer.add_child(shot)
+	for i in range(shot_count):
+		var shot = _spawn_shot()
+		shot.damage = damage
+		shot.velocity = shot_speed * (1 + (randf() - .5) * shot_speed_var)
+		shot.position = to_global(position)
+		shot.rotation = owner.rotation + (randf() - .5) * deg2rad(scattering)
+		shot_layer.add_child(shot)
+
+	$"../shot_stream".play()
 
 
 func reload():

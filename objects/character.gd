@@ -45,7 +45,6 @@ func take_damage(damage: float):
 		die()
 
 
-
 func die():
 	emit_signal("dying")
 	queue_free()

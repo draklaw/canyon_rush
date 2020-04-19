@@ -12,6 +12,7 @@ enum {
 	SNIPER, # Boom headshot
 	TYPES
 }
+
 const RUSH_FACTOR = 5
 const FAST_FACTOR = 1.5
 const MASH_RANGE = 600
@@ -37,7 +38,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var offset = Vector2(0,0)
-	
+
 	var pc = $"/root/world/pc"
 	var sep = Vector2(0,0)
 	if (pc):
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 				if sep.length() < DASH_RANGE:
 					offset = 60*DASH_RANGE * sep.rotated(PI/2 if randi()%2 else -PI/2).normalized()
 					stat -= DASH_COST
-	
+
 	move_and_slide(offset)
 	
 	if type == SNIPER:
