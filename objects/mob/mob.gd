@@ -23,48 +23,57 @@ const DASH_COST = 80
 const SNIP_CHARGE = 1
 const SNIP_DAMAGE = 25
 
-var type
-var stat
+var type = 0
+var stat = 100
+var attack = 100
 
 var shot = preload("res://objects/gun_shot/gun_shot.tscn")
 var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
 func _ready() -> void:
 	add_to_group("hive")
+	i_am_a_mob_instance = true
 	type = randi() % TYPES;
 	stat = 80 + randi() % 40;
 	if type == TANKER:
 		hp += stat
 
 func _physics_process(delta: float) -> void:
-	var offset = Vector2(0,0)
+	var move = Vector2(0,0)
+	var tobot = Vector2(0,0)
+	var tohuman = Vector2(0,0)
 
-	var sep = Vector2(0,0)
 	if has_node("/root/world/pc"):
-		var pc = $"/root/world/pc"
-		sep = (pc.position - position)
+		tobot = $"/root/world/pc".position - position
 
-	if type == MASHER and sep.length() < MASH_RANGE * stat/100:
-		offset += 3 * sep
-	if type == FLEEER and sep.length() < FLEE_RANGE * stat/100:
-		offset -= sep
+	if type == MASHER and tobot.length() < MASH_RANGE * stat/100:
+		move += 3 * tobot
+	if type == FLEEER and tobot.length() < FLEE_RANGE * stat/100:
+		move -= tobot
 
-	offset.x -= speed * (RUSH_FACTOR if type == RUSHER else 1)
+	if has_node("/root/world/human"):
+		tohuman = $"/root/world/human".position - position
 
-	offset = offset.normalized() * speed * (FAST_FACTOR if type == FASTER else 1)
+	if type == RUSHER or tohuman.length() < 300:
+		move += tohuman
+	else:
+		move.x -= speed
+
+	move = move.normalized() * speed * (FAST_FACTOR if type == FASTER else 1)
 
 	if type == DASHER:
 		if stat < 100:
 			stat += DASH_REGEN
 		if stat > DASH_COST:
 			for s in get_tree().get_nodes_in_group("shoots"):
-				sep = position - s.position;
-				if sep.length() < DASH_RANGE:
-					offset = 60*DASH_RANGE * sep.rotated(PI/2 if randi()%2 else -PI/2).normalized()
+				var toshot = position - s.position;
+				if toshot.length() < DASH_RANGE:
+					move = 60*DASH_RANGE * toshot.rotated(PI/2 if randi()%2 else -PI/2).normalized()
 					stat -= DASH_COST
 
-	move_and_slide(offset)
+	move_and_slide(move)
 
+	attack -= 1
 	if type == SNIPER:
 		stat -= SNIP_CHARGE
 		if stat < 0:
@@ -74,13 +83,14 @@ func _physics_process(delta: float) -> void:
 			acid.collision_mask = 0x3
 			acid.damage = SNIP_DAMAGE
 			acid.position = position
-			acid.rotation = sep.angle()
+			acid.rotation = tobot.angle()
 			get_node("/root/world/shots").add_child(acid)
-
-	for i in range(get_slide_count()):
-		var collider = get_slide_collision(i).collider
-		if collider is Character:
-			collider.take_damage(damage_on_hit)
+	else:
+		for i in range(get_slide_count()):
+			var collider = get_slide_collision(i).collider
+			if attack < 0 and collider is Character and not collider.i_am_a_mob_instance:
+				collider.take_damage(damage_on_hit)
+				attack = 100
 
 	._physics_process(delta)
 
