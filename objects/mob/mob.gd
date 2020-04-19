@@ -26,7 +26,7 @@ const sprites = [
 	preload("res://objects/mob/masher_anims.tres"),
 	preload("res://objects/mob/fleer_anims.tres"),
 	preload("res://objects/mob/tanker_anims.tres"),
-	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/dasher_anims.tres"),
 	preload("res://objects/mob/sniper_anims.tres"),
 ]
 
