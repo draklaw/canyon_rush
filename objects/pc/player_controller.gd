@@ -59,7 +59,7 @@ func setup(viewport_: Viewport, pc_: Node, gamepad_index_: int = -1):
 
 	var events = create_default_events()
 
-	var id = "kb" if gamepad_index < 0 else "pad%d_" % gamepad_index
+	var id = "kb_" if gamepad_index < 0 else "pad%d_" % gamepad_index
 	for act in range(action_suffixes.size()):
 		var act_name = id + action_suffixes[act]
 		action_names.append(act_name)

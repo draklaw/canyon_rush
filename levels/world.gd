@@ -57,12 +57,12 @@ func _process(delta: float) -> void:
 		emit_signal("remaining_time_changed", remaining_time)
 
 	elif state == STARTING:
-		if Input.is_action_just_pressed("p1_shoot"):
+		if Input.is_action_just_pressed("ui_accept"):
 			state = PLAYING
 			get_tree().paused = false
 			gui.hide_start_panel()
 	elif state == GAME_OVER:
-		if Input.is_action_just_pressed("p1_shoot"):
+		if Input.is_action_just_pressed("ui_accept"):
 			get_tree().change_scene("res://levels/world.tscn")
 
 
