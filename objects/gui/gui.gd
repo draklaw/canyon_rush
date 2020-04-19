@@ -3,7 +3,12 @@ extends MarginContainer
 
 onready var health_bar: ProgressBar = $main_layout/health_bar
 onready var human_bar: ProgressBar = $main_layout/human_row/human_bar
-onready var timer: ProgressBar = $main_layout/human_row/evac_bar/timer
+onready var timer: Label = $main_layout/human_row/evac_bar/timer
+onready var ammo_bar: AmmoBar = $main_layout/ammo_bar
+
+
+var weapon: Weapon
+
 
 const human_sprite = [
 	preload("res://objects/gui/human_bar_0.tres"),
@@ -33,3 +38,15 @@ func set_timer(time: float):
 	var seconds = int_time % 60
 
 	timer.text = "%02d:%02d" % [minutes, seconds]
+
+
+func set_weapon(weapon_: Weapon):
+	if weapon:
+		weapon.disconnect("ammo_count_changed", ammo_bar, "set_value")
+
+	weapon = weapon_
+
+	if weapon:
+		ammo_bar.max_value = weapon.ammo_capacity
+		ammo_bar.value = weapon.ammo_count
+		weapon.connect("ammo_count_changed", ammo_bar, "set_value")

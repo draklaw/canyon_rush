@@ -11,8 +11,10 @@ onready var shotgun: Weapon = $shotgun
 var weapon: Weapon
 
 
+signal weapon_changed
+
+
 func _ready() -> void:
-	weapon = machine_gun
 	var err = connect("took_damage", self, "on_took_damage")
 	assert(err == OK)
 
@@ -51,6 +53,11 @@ func _physics_process(delta: float) -> void:
 		weapon.reload()
 
 	._physics_process(delta)
+
+
+func set_weapon(weapon_: Weapon):
+	weapon = weapon_
+	emit_signal("weapon_changed", weapon)
 
 
 func on_took_damage(_damage):

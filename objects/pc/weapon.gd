@@ -25,6 +25,9 @@ var ammo_count: int = 0
 var shots_remaining: int = 0
 
 
+signal ammo_count_changed
+
+
 func _ready() -> void:
 	ammo_count = ammo_capacity
 	shots_remaining = burst
@@ -41,8 +44,15 @@ func stop_shooting():
 
 
 func _physics_process(delta: float) -> void:
+	var not_reloaded_yet = reload_time_remaining > 0
+
 	time_before_next_shot -= delta
 	reload_time_remaining -= delta
+
+	if not_reloaded_yet and reload_time_remaining <= 0:
+		ammo_count = ammo_capacity
+		time_before_next_shot = 0
+		emit_signal("ammo_count_changed", ammo_count)
 
 	if (
 		not shooting
@@ -53,10 +63,13 @@ func _physics_process(delta: float) -> void:
 	):
 		return
 
+
 	shoot_once()
 	ammo_count -= 1
 	shots_remaining -= 1
 	time_before_next_shot += shot_delay
+
+	emit_signal("ammo_count_changed", ammo_count)
 
 
 func shoot_once():
@@ -73,7 +86,7 @@ func shoot_once():
 
 func reload():
 	if reload_time_remaining <= 0 and ammo_count != ammo_capacity:
-		ammo_count = ammo_capacity
+		#ammo_count = ammo_capacity
 		reload_time_remaining = reload_delay
 		shots_remaining = burst
 
