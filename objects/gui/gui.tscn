@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/gui/gui.gd" type="Script" id=1]
+[ext_resource path="res://objects/gui/hb_middle.png" type="Texture" id=2]
+[ext_resource path="res://objects/gui/hb_under.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/human_bar_4.tres" type="Texture" id=4]
 
 [node name="gui" type="MarginContainer"]
 anchor_right = 1.0
@@ -22,12 +25,18 @@ margin_bottom = 1056.0
 
 [node name="top_bar" type="HBoxContainer" parent="main_layout"]
 margin_right = 1872.0
-margin_bottom = 14.0
+margin_bottom = 64.0
 
-[node name="health_bar" type="ProgressBar" parent="main_layout/top_bar"]
-margin_right = 200.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 200, 0 )
-step = 1.0
+[node name="health_bar" type="TextureProgress" parent="main_layout/top_bar"]
 value = 100.0
 rounded = true
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="human_bar" type="TextureRect" parent="main_layout/top_bar"]
+margin_left = 304.0
+margin_right = 560.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 256, 64 )
+texture = ExtResource( 4 )
+stretch_mode = 1

@@ -37,9 +37,9 @@ func f(l):
 func _physics_process(delta: float) -> void:
 	var offset = Vector2(0,0)
 
-	var pc = $"/root/world/pc"
 	var sep = Vector2(0,0)
-	if (pc):
+	if has_node("/root/world/pc"):
+		var pc = $"/root/world/pc"
 		sep = (pc.position - position)
 
 	if type == MASHER and sep.length() < 500 * stat/100:
@@ -62,6 +62,11 @@ func _physics_process(delta: float) -> void:
 					stat -= DASH_COST
 
 	move_and_slide(offset)
+
+	for i in range(get_slide_count()):
+		var collider = get_slide_collision(i).collider
+		if collider is Character:
+			collider.take_damage(damage_on_hit)
 
 	._physics_process(delta)
 

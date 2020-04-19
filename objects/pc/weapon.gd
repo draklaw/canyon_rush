@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot_once():
-	for i in range(shot_count):
+	for _i in range(shot_count):
 		var shot = _spawn_shot()
 		shot.damage = damage
 		shot.velocity = shot_speed * (1 + (randf() - .5) * shot_speed_var)

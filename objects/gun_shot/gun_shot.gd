@@ -6,7 +6,8 @@ export var damage: float = 10
 
 
 func _ready() -> void:
-	connect("body_entered", self, "on_hit_body")
+	var err = connect("body_entered", self, "on_hit_body")
+	assert(err == OK)
 	self.add_to_group("shoots")
 
 

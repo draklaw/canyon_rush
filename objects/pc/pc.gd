@@ -13,7 +13,8 @@ var weapon: Weapon
 
 func _ready() -> void:
 	weapon = machine_gun
-	connect("took_damage", self, "on_took_damage")
+	var err = connect("took_damage", self, "on_took_damage")
+	assert(err == OK)
 
 
 func _physics_process(delta: float) -> void:
@@ -52,5 +53,5 @@ func _physics_process(delta: float) -> void:
 	._physics_process(delta)
 
 
-func on_took_damage(damage):
+func on_took_damage(_damage):
 	$damage_stream.play()

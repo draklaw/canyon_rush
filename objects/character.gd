@@ -25,12 +25,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	remaining_recovery_time -= delta
 
-	for i in range(get_slide_count()):
-		var collider = get_slide_collision(i).collider
-		var damage_on_hit = collider.get("damage_on_hit")
-		if damage_on_hit:
-			take_damage(damage_on_hit)
-
 
 func take_damage(damage: float):
 	if damage <= 0 or remaining_recovery_time > 0:
