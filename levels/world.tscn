@@ -103,7 +103,7 @@ position = Vector2( 312.507, 447.64 )
 player_index = 2
 
 [node name="pc_4" parent="players" instance=ExtResource( 7 )]
-position = Vector2( 289.092, 599.835 )
+position = Vector2( 312.5, 709.074 )
 player_index = 3
 
 [node name="gui" parent="." instance=ExtResource( 6 )]

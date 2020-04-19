@@ -21,8 +21,8 @@ const leet:  Array = [ 0, 5, 20, 20,  0, 20, 10, 30]
 
 const sprites = [
 	preload("res://objects/mob/masher_anims.tres"),
-	preload("res://objects/mob/masher_anims.tres"),
-	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/rusher_anims.tres"),
+	preload("res://objects/mob/faster_anims.tres"),
 	preload("res://objects/mob/masher_anims.tres"),
 	preload("res://objects/mob/fleer_anims.tres"),
 	preload("res://objects/mob/tanker_anims.tres"),

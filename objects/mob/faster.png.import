@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/faster.png-4d11d05f0c73ba19e3a0eebeb24721dc.stex"
+path="res://.import/faster.png-29a49e7499d940a1088e959841014020.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/faster.png"
-dest_files=[ "res://.import/faster.png-4d11d05f0c73ba19e3a0eebeb24721dc.stex" ]
+source_file="res://objects/mob/faster.png"
+dest_files=[ "res://.import/faster.png-29a49e7499d940a1088e959841014020.stex" ]
 
 [params]
 
