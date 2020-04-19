@@ -4,8 +4,6 @@ class_name Mob
 
 export var speed: float = 192
 
-const trash: Array = [20, 4,  0,  2, 10,  1,  0,  0]
-const leet:  Array = [ 0, 5, 20, 20,  0, 20, 10, 30]
 enum {
 	BUGGER, # Nothing special
 	RUSHER, # Eyes on the prize
@@ -17,6 +15,20 @@ enum {
 	SNIPER, # Boom headshot
 	MOB_TYPES
 }
+
+const trash: Array = [20, 4,  0,  2, 10,  1,  0,  0]
+const leet:  Array = [ 0, 5, 20, 20,  0, 20, 10, 30]
+
+const sprites = [
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/tanker_anims.tres"),
+	preload("res://objects/mob/masher_anims.tres"),
+	preload("res://objects/mob/sniper_anims.tres"),
+]
 
 const RUSH_FACTOR: float = 5.0
 const FAST_FACTOR: float = 1.5
@@ -35,6 +47,7 @@ var attack: float = 100
 var shot = preload("res://objects/gun_shot/gun_shot.tscn")
 var acid_pic = preload("res://objects/gun_shot/acid_shot.png")
 
+
 func set_mobtype (ntype: int) -> void:
 	type = ntype
 	stat = 80 + randi() % 40;
@@ -44,6 +57,7 @@ func set_mobtype (ntype: int) -> void:
 func _ready() -> void:
 	add_to_group("hive")
 	i_am_a_mob_instance = true
+	$sprite.frames = sprites[type]
 
 func _physics_process(delta: float) -> void:
 	var move = Vector2(0,0)

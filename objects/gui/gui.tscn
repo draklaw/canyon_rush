@@ -24,13 +24,33 @@ margin_left = 24.0
 margin_top = 24.0
 margin_right = -24.0
 margin_bottom = -24.0
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="human_row" type="HBoxContainer" parent="main_layout"]
+[node name="health_bar" type="TextureProgress" parent="main_layout"]
+margin_top = 882.0
 margin_right = 1872.0
-margin_bottom = 78.0
+margin_bottom = 906.0
+value = 100.0
+rounded = true
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="ammo_bar" type="Control" parent="main_layout"]
+margin_top = 914.0
+margin_right = 1872.0
+margin_bottom = 946.0
+script = ExtResource( 6 )
+texture = ExtResource( 7 )
+max_value = 30
+
+[node name="human_row" type="HBoxContainer" parent="main_layout"]
+margin_top = 954.0
+margin_right = 1872.0
+margin_bottom = 1032.0
+custom_constants/separation = 64
 
 [node name="human_bar" type="TextureRect" parent="main_layout/human_row"]
 margin_right = 256.0
@@ -42,8 +62,8 @@ texture = ExtResource( 4 )
 stretch_mode = 1
 
 [node name="evac_bar" type="VBoxContainer" parent="main_layout/human_row"]
-margin_left = 264.0
-margin_right = 570.0
+margin_left = 320.0
+margin_right = 626.0
 margin_bottom = 78.0
 
 [node name="timer_label" type="Label" parent="main_layout/human_row/evac_bar"]
@@ -61,25 +81,6 @@ rect_min_size = Vector2( 140, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "10:00"
 align = 1
-
-[node name="health_bar" type="TextureProgress" parent="main_layout"]
-margin_top = 86.0
-margin_right = 1872.0
-margin_bottom = 110.0
-value = 100.0
-rounded = true
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 2 )
-
-[node name="ammo_bar" type="Control" parent="main_layout"]
-margin_top = 118.0
-margin_right = 1872.0
-margin_bottom = 150.0
-script = ExtResource( 6 )
-texture = ExtResource( 7 )
-max_value = 30
-value = 0
-separation = 4
 
 [node name="game_over_panel" type="Panel" parent="."]
 visible = false
@@ -102,7 +103,7 @@ bbcode_text = "[font=res://objects/gui/font_big.tres]The human died.[/font]
 You failed to [color=#e15a5a]keep him alive[/color] !
 
 
-[right]Press [color=#e15a5a][shoot][/color] to try again.[/right]
+[right]Press [color=#e15a5a][enter][/color] or [color=#e15a5a][X][/color] to try again.[/right]
 "
 text = "The human died.
 
@@ -110,7 +111,7 @@ text = "The human died.
 You failed to keep him alive !
 
 
-Press [shoot] to try again.
+Press [enter] or [X] to try again.
 "
 scroll_active = false
 __meta__ = {
@@ -140,9 +141,10 @@ A human is harmed and all medbots are down. As a security bot, you must [color=#
 [color=#e15a5a]Shoot:[/color] left click
 [color=#e15a5a]Dodge:[/color] right click
 [color=#e15a5a]Reload:[/color] R or 4th mouse button
+[color=#e15a5a]Change weapon:[/color] Q or E
 
 
-[right]Press [color=#e15a5a][shoot][/color] to start.[/right]
+[right]Press [color=#e15a5a][enter][/color] or [color=#e15a5a][X][/color] to start.[/right]
 "
 text = "Your ship has crashed.
 
@@ -153,9 +155,10 @@ Move: Arrow keys or WASD
 Shoot: left click
 Dodge: right click
 Reload: R or 4th mouse button
+Change weapon: Q or E
 
 
-Press [shoot] to start.
+Press [enter] or [X] to start.
 "
 scroll_active = false
 __meta__ = {
