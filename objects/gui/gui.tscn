@@ -1,34 +1,31 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://objects/gui/hb_middle.png" type="Texture" id=2]
 [ext_resource path="res://objects/gui/hb_under.png" type="Texture" id=3]
 [ext_resource path="res://objects/gui/human_bar_4.tres" type="Texture" id=4]
-[ext_resource path="res://assets/GeneraleStation-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://objects/gui/font_big.tres" type="DynamicFont" id=5]
 [ext_resource path="res://objects/gui/ammo_bar.gd" type="Script" id=6]
 [ext_resource path="res://objects/gui/ammo.png" type="Texture" id=7]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 5 )
-
-[node name="gui" type="MarginContainer"]
+[node name="gui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 24
-custom_constants/margin_top = 24
-custom_constants/margin_left = 24
-custom_constants/margin_bottom = 24
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="main_layout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 24.0
 margin_top = 24.0
-margin_right = 1896.0
-margin_bottom = 1056.0
+margin_right = -24.0
+margin_bottom = -24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="human_row" type="HBoxContainer" parent="main_layout"]
 margin_right = 1872.0
@@ -39,6 +36,7 @@ margin_right = 256.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 256, 64 )
 size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource( 4 )
 stretch_mode = 1
 
@@ -58,7 +56,7 @@ margin_top = 18.0
 margin_right = 140.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "10:00"
 align = 1
 
@@ -78,3 +76,82 @@ margin_bottom = 128.0
 script = ExtResource( 6 )
 texture = ExtResource( 7 )
 max_value = 30
+
+[node name="game_over_panel" type="Panel" parent="."]
+visible = false
+margin_left = 560.0
+margin_top = 384.0
+margin_right = 1360.0
+margin_bottom = 672.0
+
+[node name="label" type="RichTextLabel" parent="game_over_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+bbcode_enabled = true
+bbcode_text = "[font=res://objects/gui/font_big.tres]The human died.[/font]
+
+
+You failed to [i]keep him alive[/i] !
+
+
+[right]Press [[shoot]] to try again.[/right]
+"
+text = "The human died.
+
+
+You failed to keep him alive !
+
+
+Press [[shoot]] to try again.
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_panel" type="Panel" parent="."]
+margin_left = 560.0
+margin_top = 256.0
+margin_right = 1360.0
+margin_bottom = 784.0
+
+[node name="label" type="RichTextLabel" parent="start_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+bbcode_enabled = true
+bbcode_text = "[font=res://objects/gui/font_big.tres]Your ship has crashed.[/font]
+
+A human is harmed and all medbots are down. As a security bot, you must [color=#e15a5a]keep him alive[/color] until rescue arrive.
+
+
+[color=#e15a5a]Move:[/color] arrow keys or WASD
+[color=#e15a5a]Shoot:[/color] left click
+[color=#e15a5a]Reload:[/color] R or 4th mouse button
+
+
+[right]Press [shoot] to start.[/right]
+"
+text = "Your ship has crashed.
+
+A human is harmed and all medbots are down. As a security bot, you must keep him alive until rescue arrive.
+
+
+Move: arrow keys or WASD
+Shoot: left click
+Reload: R or 4th mouse button
+
+
+Press [shoot] to start.
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

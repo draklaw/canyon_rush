@@ -12,6 +12,7 @@
 extents = Vector2( 163.821, 353.319 )
 
 [node name="world" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]

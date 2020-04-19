@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 
 onready var health_bar: ProgressBar = $main_layout/health_bar
@@ -17,10 +17,6 @@ const human_sprite = [
 	preload("res://objects/gui/human_bar_3.tres"),
 	preload("res://objects/gui/human_bar_4.tres"),
 ]
-
-
-func _ready() -> void:
-	pass
 
 
 func set_pc_health(hp):
@@ -50,3 +46,11 @@ func set_weapon(weapon_: Weapon):
 		ammo_bar.max_value = weapon.ammo_capacity
 		ammo_bar.value = weapon.ammo_count
 		weapon.connect("ammo_count_changed", ammo_bar, "set_value")
+
+
+func hide_start_panel():
+	$start_panel.visible = false
+
+
+func show_game_over_panel():
+	$game_over_panel.visible = true
