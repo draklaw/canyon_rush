@@ -64,7 +64,8 @@ func setup(viewport_: Viewport, pc_: Node, gamepad_index_: int = -1):
 		var act_name = id + action_suffixes[act]
 		action_names.append(act_name)
 
-		InputMap.add_action(act_name, 0.25)
+		if not InputMap.has_action(act_name):
+			InputMap.add_action(act_name, 0.25)
 		InputMap.action_erase_events(act_name)
 		for event in events[act]:
 			InputMap.action_add_event(act_name, event)

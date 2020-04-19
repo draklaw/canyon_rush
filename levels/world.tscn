@@ -76,6 +76,9 @@ lifetime = 3.0
 process_material = SubResource( 6 )
 texture = ExtResource( 9 )
 
+[node name="human" parent="." instance=ExtResource( 5 )]
+position = Vector2( 145.018, 577.629 )
+
 [node name="mob_spawn" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
@@ -85,9 +88,6 @@ mob = ExtResource( 2 )
 [node name="spawn_shape" type="CollisionShape2D" parent="mob_spawn"]
 position = Vector2( 2284.78, 531.679 )
 shape = SubResource( 7 )
-
-[node name="human" parent="." instance=ExtResource( 5 )]
-position = Vector2( 145.018, 577.629 )
 
 [node name="players" type="Node2D" parent="."]
 

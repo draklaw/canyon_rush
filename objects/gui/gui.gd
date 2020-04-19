@@ -15,9 +15,6 @@ onready var human_bar: ProgressBar = $main_layout/human_row/human_bar
 onready var timer: Label = $main_layout/human_row/evac_bar/timer
 
 
-var weapon: Weapon
-
-
 const human_sprite = [
 	preload("res://objects/gui/human_bar_0.tres"),
 	preload("res://objects/gui/human_bar_1.tres"),
@@ -49,7 +46,9 @@ func set_timer(time: float):
 
 
 func set_weapon(player_index: int, weapon_: Weapon):
-	var ammo_bar = player_info[player_index].get_node("ammo_bar")
+	var info = player_info[player_index]
+	var weapon = info.weapon
+	var ammo_bar = info.get_node("ammo_bar")
 
 	if weapon:
 		weapon.disconnect("ammo_count_changed", ammo_bar, "set_value")

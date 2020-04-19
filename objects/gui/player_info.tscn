@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/gui/ammo_bar.gd" type="Script" id=1]
 [ext_resource path="res://objects/gui/weapons.png" type="Texture" id=2]
 [ext_resource path="res://objects/gui/hb_middle.png" type="Texture" id=3]
 [ext_resource path="res://objects/gui/hb_under.png" type="Texture" id=4]
 [ext_resource path="res://objects/gui/ammo.png" type="Texture" id=5]
+[ext_resource path="res://objects/gui/player_info.gd" type="Script" id=6]
 
 [node name="player_info" type="Control"]
 margin_top = 882.0
 margin_right = 1872.0
 margin_bottom = 946.0
 rect_min_size = Vector2( 200, 64 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="health_bar" type="TextureProgress" parent="."]
 margin_left = 69.5848

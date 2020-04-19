@@ -90,5 +90,5 @@ func set_weapon_index(weapon_index_: int):
 	emit_signal("weapon_changed", player_index, get_active_weapon())
 
 
-func on_took_damage(_damage):
+func on_took_damage(_self, _damage):
 	$damage_stream.play()
