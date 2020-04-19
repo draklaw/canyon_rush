@@ -1,5 +1,17 @@
 extends Node
 
+class_name Main
+
+
+enum Mode {
+	EASY,
+	NORMAL,
+	HARD,
+	ENDLESS,
+}
+
+
+export var mode: int = Mode.NORMAL
 
 var enter_pressed: bool = false
 
