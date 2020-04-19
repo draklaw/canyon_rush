@@ -29,7 +29,7 @@ __meta__ = {
 
 [node name="human_row" type="HBoxContainer" parent="main_layout"]
 margin_right = 1872.0
-margin_bottom = 64.0
+margin_bottom = 78.0
 
 [node name="human_bar" type="TextureRect" parent="main_layout/human_row"]
 margin_right = 256.0
@@ -41,41 +41,43 @@ texture = ExtResource( 4 )
 stretch_mode = 1
 
 [node name="evac_bar" type="VBoxContainer" parent="main_layout/human_row"]
-margin_left = 260.0
-margin_right = 400.0
-margin_bottom = 64.0
+margin_left = 264.0
+margin_right = 570.0
+margin_bottom = 78.0
 
 [node name="timer_label" type="Label" parent="main_layout/human_row/evac_bar"]
-margin_right = 140.0
-margin_bottom = 14.0
+margin_right = 306.0
+margin_bottom = 30.0
 text = "Time before evac:"
 align = 1
 
 [node name="timer" type="Label" parent="main_layout/human_row/evac_bar"]
-margin_top = 18.0
-margin_right = 140.0
-margin_bottom = 58.0
+margin_top = 38.0
+margin_right = 306.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 140, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "10:00"
 align = 1
 
 [node name="health_bar" type="TextureProgress" parent="main_layout"]
-margin_top = 68.0
+margin_top = 86.0
 margin_right = 1872.0
-margin_bottom = 92.0
+margin_bottom = 110.0
 value = 100.0
 rounded = true
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 
 [node name="ammo_bar" type="Control" parent="main_layout"]
-margin_top = 96.0
+margin_top = 118.0
 margin_right = 1872.0
-margin_bottom = 128.0
+margin_bottom = 150.0
 script = ExtResource( 6 )
 texture = ExtResource( 7 )
 max_value = 30
+value = 0
+separation = 4
 
 [node name="game_over_panel" type="Panel" parent="."]
 visible = false
@@ -122,17 +124,17 @@ margin_bottom = 784.0
 [node name="label" type="RichTextLabel" parent="start_panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
+margin_left = 17.8506
 margin_top = 16.0
-margin_right = -16.0
+margin_right = -14.1494
 margin_bottom = -16.0
 bbcode_enabled = true
 bbcode_text = "[font=res://objects/gui/font_big.tres]Your ship has crashed.[/font]
 
-A human is harmed and all medbots are down. As a security bot, you must [color=#e15a5a]keep him alive[/color] until rescue arrive.
+A human is harmed and all medbots are down. As a security bot, you must [color=#e15a5a]keep him alive[/color] until rescue arrives.
 
 
-[color=#e15a5a]Move:[/color] arrow keys or WASD
+[color=#e15a5a]Move:[/color] Arrow keys or WASD
 [color=#e15a5a]Shoot:[/color] left click
 [color=#e15a5a]Reload:[/color] R or 4th mouse button
 
@@ -141,10 +143,10 @@ A human is harmed and all medbots are down. As a security bot, you must [color=#
 "
 text = "Your ship has crashed.
 
-A human is harmed and all medbots are down. As a security bot, you must keep him alive until rescue arrive.
+A human is harmed and all medbots are down. As a security bot, you must keep him alive until rescue arrives.
 
 
-Move: arrow keys or WASD
+Move: Arrow keys or WASD
 Shoot: left click
 Reload: R or 4th mouse button
 

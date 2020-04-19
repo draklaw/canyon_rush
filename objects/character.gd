@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 class_name Character
-
+export var i_am_a_mob_instance = false
 
 export var max_hp: float = 100
 export var hp: float = 100
