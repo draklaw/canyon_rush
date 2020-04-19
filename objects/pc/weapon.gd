@@ -34,13 +34,15 @@ func _ready() -> void:
 
 
 func start_shooting():
-	shooting = true
-	time_before_next_shot = max(time_before_next_shot, 0)
+	if not shooting:
+		shooting = true
+		time_before_next_shot = max(time_before_next_shot, 0)
 
 
 func stop_shooting():
-	shooting = false
-	shots_remaining = burst
+	if shooting:
+		shooting = false
+		shots_remaining = burst
 
 
 func _physics_process(delta: float) -> void:

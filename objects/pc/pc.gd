@@ -2,6 +2,9 @@ extends Character
 
 
 export var speed: float = 256
+export var dodge_speed: float = 900
+export var dodge_time: float = 0.15
+export var dodge_recovery: float = 0.5
 
 
 onready var gun: Weapon = $gun
@@ -9,6 +12,8 @@ onready var machine_gun: Weapon = $machine_gun
 onready var shotgun: Weapon = $shotgun
 
 var weapon: Weapon
+var remaining_dodge_time: float = 0
+var dodge_direction: Vector2
 
 
 signal weapon_changed
@@ -21,21 +26,30 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
+	remaining_dodge_time -= delta
 
-	var offset = Vector2()
+	var direction = Vector2()
 
 	if Input.is_action_pressed("p1_left"):
-		offset.x -= 1
+		direction.x -= 1
 	if Input.is_action_pressed("p1_right"):
-		offset.x += 1
+		direction.x += 1
 	if Input.is_action_pressed("p1_up"):
-		offset.y -= 1
+		direction.y -= 1
 	if Input.is_action_pressed("p1_down"):
-		offset.y += 1
+		direction.y += 1
 
-	offset = offset.normalized() * speed
+	direction = direction.normalized()
 
-	move_and_slide(offset)
+	if Input.is_action_just_pressed("p1_dodge") and remaining_dodge_time <= -dodge_recovery:
+		remaining_dodge_time = dodge_time
+		dodge_direction = direction
+		weapon.stop_shooting()
+
+	if remaining_dodge_time > 0:
+		move_and_slide(dodge_direction * dodge_speed)
+	else:
+		move_and_slide(direction * speed)
 
 	### ORIENTATION
 
@@ -44,13 +58,14 @@ func _physics_process(delta: float) -> void:
 
 	### WEAPONS
 
-	if Input.is_action_just_pressed("p1_shoot"):
-		weapon.start_shooting()
-	elif Input.is_action_just_released("p1_shoot"):
-		weapon.stop_shooting()
+	if remaining_dodge_time <= 0:
+		if Input.is_action_pressed("p1_shoot"):
+			weapon.start_shooting()
+		else:
+			weapon.stop_shooting()
 
-	if Input.is_action_just_pressed("p1_reload"):
-		weapon.reload()
+		if Input.is_action_just_pressed("p1_reload"):
+			weapon.reload()
 
 	._physics_process(delta)
 
