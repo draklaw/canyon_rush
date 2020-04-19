@@ -32,7 +32,7 @@ func set_pc_health(player: Node, hp: float):
 	player_info[player.player_index].get_node("health_bar").value = hp
 
 
-func set_human_health(human_: Node, hp):
+func set_human_health(_human: Node, hp):
 	var points = ceil(hp / 25)
 	human_bar.texture = human_sprite[points]
 
@@ -47,19 +47,18 @@ func set_timer(time: float):
 
 func set_weapon(player_index: int, weapon_: Weapon):
 	var info = player_info[player_index]
-	var weapon = info.weapon
 	var ammo_bar = info.get_node("ammo_bar")
 
-	if weapon:
-		weapon.disconnect("ammo_count_changed", ammo_bar, "set_value")
+	if info.weapon:
+		info.weapon.disconnect("ammo_count_changed", ammo_bar, "set_value")
 
-	weapon = weapon_
+	info.weapon = weapon_
 
-	if weapon:
-		ammo_bar.weapon_index = weapon.weapon_index
-		ammo_bar.max_value = weapon.ammo_capacity
-		ammo_bar.value = weapon.ammo_count
-		weapon.connect("ammo_count_changed", ammo_bar, "set_value")
+	if info.weapon:
+		ammo_bar.weapon_index = info.weapon.weapon_index
+		ammo_bar.max_value = info.weapon.ammo_capacity
+		ammo_bar.value = info.weapon.ammo_count
+		info.weapon.connect("ammo_count_changed", ammo_bar, "set_value")
 
 
 func hide_start_panel():

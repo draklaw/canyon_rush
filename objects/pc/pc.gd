@@ -53,8 +53,10 @@ func _physics_process(delta: float) -> void:
 		get_active_weapon().stop_shooting()
 
 	if remaining_dodge_time > 0:
+		# warning-ignore:return_value_discarded
 		move_and_slide(dodge_direction * dodge_speed)
 	else:
+		# warning-ignore:return_value_discarded
 		move_and_slide(direction * speed)
 
 	### ORIENTATION

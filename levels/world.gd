@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 		if main.mode != Main.Mode.ENDLESS:
 			remaining_time -= delta
 			if remaining_time <= 0:
+				# warning-ignore:return_value_discarded
 				get_tree().change_scene("res://levels/end_screen.tscn")
 		else:
 			remaining_time += delta
@@ -82,6 +83,7 @@ func _process(delta: float) -> void:
 			gui.hide_start_panel()
 	elif state == GAME_OVER:
 		if Input.is_action_just_pressed("ui_accept"):
+			# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://levels/world.tscn")
 
 
