@@ -5,7 +5,7 @@ var enter_pressed: bool = false
 
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 
 func _process(_delta: float) -> void:

@@ -95,10 +95,10 @@ bbcode_enabled = true
 bbcode_text = "[font=res://objects/gui/font_big.tres]The human died.[/font]
 
 
-You failed to [i]keep him alive[/i] !
+You failed to [color=#e15a5a]keep him alive[/color] !
 
 
-[right]Press [[shoot]] to try again.[/right]
+[right]Press [color=#e15a5a][shoot][/color] to try again.[/right]
 "
 text = "The human died.
 
@@ -106,7 +106,7 @@ text = "The human died.
 You failed to keep him alive !
 
 
-Press [[shoot]] to try again.
+Press [shoot] to try again.
 "
 scroll_active = false
 __meta__ = {
@@ -137,7 +137,7 @@ A human is harmed and all medbots are down. As a security bot, you must [color=#
 [color=#e15a5a]Reload:[/color] R or 4th mouse button
 
 
-[right]Press [shoot] to start.[/right]
+[right]Press [color=#e15a5a][shoot][/color] to start.[/right]
 "
 text = "Your ship has crashed.
 
