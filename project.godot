@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://levels/main.gd"
 }, {
 "base": "Character",
+"class": "Mob",
+"language": "GDScript",
+"path": "res://objects/mob/mob.gd"
+}, {
+"base": "Character",
 "class": "PlayerCharacter",
 "language": "GDScript",
 "path": "res://objects/pc/pc.gd"
@@ -33,6 +38,11 @@ _global_script_classes=[ {
 "class": "PlayerController",
 "language": "GDScript",
 "path": "res://objects/pc/player_controller.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://utils.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -43,8 +53,10 @@ _global_script_class_icons={
 "AmmoBar": "",
 "Character": "",
 "Main": "",
+"Mob": "",
 "PlayerCharacter": "",
 "PlayerController": "",
+"Utils": "",
 "Weapon": ""
 }
 

@@ -10,23 +10,23 @@
 [ext_resource path="res://levels/ship.png" type="Texture" id=8]
 [ext_resource path="res://levels/smoke.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120.929, 111.899 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.0037037, 0.0851852, 0.566667, 1 )
 colors = PoolColorArray( 0.364706, 0.364706, 0.364706, 0, 0.40647, 0.40647, 0.40647, 1, 0.673828, 0.673828, 0.673828, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0.63964 ), 0.0, 0.716216, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 lifetime_randomness = 0.21
 emission_shape = 2
 emission_box_extents = Vector3( 32, 32, 1 )
@@ -43,10 +43,10 @@ linear_accel_random = 0.21
 angle = 360.0
 angle_random = 1.0
 scale = 1.5
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 163.821, 353.319 )
 
 [node name="world" type="Node"]
@@ -68,12 +68,12 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="ship"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="particles_2d" type="Particles2D" parent="ship"]
 amount = 32
 lifetime = 3.0
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 texture = ExtResource( 9 )
 
 [node name="mob_spawn" type="Area2D" parent="."]
@@ -84,7 +84,7 @@ mob = ExtResource( 2 )
 
 [node name="spawn_shape" type="CollisionShape2D" parent="mob_spawn"]
 position = Vector2( 2284.78, 531.679 )
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="human" parent="." instance=ExtResource( 5 )]
 position = Vector2( 145.018, 577.629 )
