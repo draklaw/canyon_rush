@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 export var time_before_win_easy: float = 30
@@ -40,9 +40,7 @@ func _ready() -> void:
 		remaining_time = 0
 	emit_signal("remaining_time_changed", remaining_time)
 
-	#pc.set_weapon(pc.gun)
-	pc.set_weapon(pc.machine_gun)
-	#pc.set_weapon(pc.shotgun)
+	pc.set_weapon_index(1)
 
 	for node in get_children():
 		node.pause_mode = Node.PAUSE_MODE_STOP

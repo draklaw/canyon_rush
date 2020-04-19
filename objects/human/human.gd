@@ -9,6 +9,6 @@ func _ready() -> void:
 	assert(err == OK)
 
 
-func on_took_damage(damage: float):
+func on_took_damage(_damage: float):
 	var points = ceil(hp / 25)
 	sprite.frame = 4 - points

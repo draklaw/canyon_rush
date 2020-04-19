@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.91360409"
-     inkscape:cx="849.61005"
-     inkscape:cy="439.83658"
+     inkscape:zoom="1.8272082"
+     inkscape:cx="1135.7429"
+     inkscape:cy="616.83057"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -88,7 +88,7 @@
          id="tspan881">Keyboard:</tspan></text>
     <g
        id="g870"
-       transform="translate(-15.078737,-14.676452)">
+       transform="translate(-35.785418,-14.676452)">
       <rect
          ry="3.0717134"
          y="105.83852"
@@ -172,7 +172,7 @@
     </g>
     <g
        id="g875"
-       transform="translate(17.789845,-5.2707158)">
+       transform="translate(30.966824,-51.462542)">
       <rect
          ry="3.0717134"
          y="123.1425"
@@ -197,14 +197,14 @@
     <text
        id="text879"
        y="80.200005"
-       x="276.02145"
+       x="268.05734"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
          y="80.200005"
-         x="276.02145"
+         x="268.05734"
          id="tspan877"
-         sodipodi:role="line">Movements:</tspan></text>
+         sodipodi:role="line">Move:</tspan></text>
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect885"
@@ -216,17 +216,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="396.22906"
-       y="128.51411"
+       x="409.40604"
+       y="82.322296"
        id="text889"><tspan
          sodipodi:role="line"
-         x="396.22906"
-         y="128.51411"
+         x="409.40604"
+         y="82.322296"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
          id="tspan891">Reload</tspan></text>
     <g
        id="g907"
-       transform="translate(7.095296,-2.2444307)">
+       transform="translate(-44.309401,9.6293303)">
       <rect
          rx="4.7449012"
          ry="5.2155151"
@@ -254,18 +254,18 @@
     </g>
     <text
        id="text911"
-       y="81.815475"
-       x="396.22906"
+       y="93.68924"
+       x="344.82437"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          id="tspan909"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
-         y="81.815475"
-         x="396.22906"
+         y="93.68924"
+         x="344.82437"
          sodipodi:role="line">Shoot</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
-         y="95.04464"
-         x="396.22906"
+         y="106.9184"
+         x="344.82437"
          sodipodi:role="line"
          id="tspan913" /></text>
     <text
@@ -288,7 +288,7 @@
    style="fill:#e15a5a;fill-opacity:1"
    id="tspan945">Draklaw</tspan></tspan></text>
     <g
-       transform="translate(7.095296,21.285888)"
+       transform="translate(-44.309401,33.159649)"
        id="g1588">
       <rect
          style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -318,18 +318,88 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="396.22906"
-       y="105.34579"
+       x="344.82437"
+       y="117.21955"
        id="text1594"><tspan
          sodipodi:role="line"
-         x="396.22906"
-         y="105.34579"
+         x="344.82437"
+         y="117.21955"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
          id="tspan1590">Dodge</tspan><tspan
          id="tspan1592"
          sodipodi:role="line"
-         x="396.22906"
-         y="118.57496"
+         x="344.82437"
+         y="130.44872"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332" /></text>
+    <g
+       transform="translate(30.966824,-32.638287)"
+       id="g1616">
+      <rect
+         rx="3.0717134"
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1610"
+         width="14.646577"
+         height="14.646577"
+         x="356.25201"
+         y="123.1425"
+         ry="3.0717134" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="359.69763"
+         y="134.50633"
+         id="text1614"><tspan
+           sodipodi:role="line"
+           x="359.69763"
+           y="134.50633"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
+           id="tspan1612">A</tspan></text>
+    </g>
+    <text
+       id="text1620"
+       y="101.14655"
+       x="409.40604"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan1618"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
+         y="101.14655"
+         x="409.40604"
+         sodipodi:role="line">Previous weapon</tspan></text>
+    <g
+       id="g1628"
+       transform="translate(30.966824,-13.524428)">
+      <rect
+         ry="3.0717134"
+         y="123.1425"
+         x="356.25201"
+         height="14.646577"
+         width="14.646577"
+         id="rect1622"
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         rx="3.0717134" />
+      <text
+         id="text1626"
+         y="134.50633"
+         x="359.69763"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1624"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
+           y="134.50633"
+           x="359.69763"
+           sodipodi:role="line">E</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="409.40604"
+       y="120.26041"
+       id="text1632"><tspan
+         sodipodi:role="line"
+         x="409.40604"
+         y="120.26041"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Generale Station';-inkscape-font-specification:'Generale Station';fill:#ffffff;stroke-width:0.26458332"
+         id="tspan1630">Next weapon</tspan></text>
   </g>
 </svg>

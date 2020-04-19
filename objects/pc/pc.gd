@@ -10,8 +10,10 @@ export var dodge_recovery: float = 0.5
 onready var gun: Weapon = $gun
 onready var machine_gun: Weapon = $machine_gun
 onready var shotgun: Weapon = $shotgun
+onready var weapons = [gun, machine_gun, shotgun]
 
-var weapon: Weapon
+var controller = null
+var weapon_index = 1 setget set_weapon_index
 var remaining_dodge_time: float = 0
 var dodge_direction: Vector2
 
@@ -20,6 +22,10 @@ signal weapon_changed
 
 
 func _ready() -> void:
+	if not controller:
+		controller = PlayerController.new()
+		controller.setup(get_viewport(), self)
+
 	var err = connect("took_damage", self, "on_took_damage")
 	assert(err == OK)
 
@@ -28,23 +34,12 @@ func _physics_process(delta: float) -> void:
 	### MOVEMENT
 	remaining_dodge_time -= delta
 
-	var direction = Vector2()
+	var direction = controller.get_move_direction()
 
-	if Input.is_action_pressed("p1_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("p1_right"):
-		direction.x += 1
-	if Input.is_action_pressed("p1_up"):
-		direction.y -= 1
-	if Input.is_action_pressed("p1_down"):
-		direction.y += 1
-
-	direction = direction.normalized()
-
-	if Input.is_action_just_pressed("p1_dodge") and remaining_dodge_time <= -dodge_recovery:
+	if controller.is_dodge_just_pressed() and remaining_dodge_time <= -dodge_recovery:
 		remaining_dodge_time = dodge_time
 		dodge_direction = direction
-		weapon.stop_shooting()
+		get_active_weapon().stop_shooting()
 
 	if remaining_dodge_time > 0:
 		move_and_slide(dodge_direction * dodge_speed)
@@ -53,26 +48,35 @@ func _physics_process(delta: float) -> void:
 
 	### ORIENTATION
 
-	var target = get_viewport().get_mouse_position()
-	look_at(target)
+	look_at(position + controller.get_look_direction())
 
 	### WEAPONS
 
 	if remaining_dodge_time <= 0:
-		if Input.is_action_pressed("p1_shoot"):
-			weapon.start_shooting()
+		if controller.is_shoot_pressed():
+			get_active_weapon().start_shooting()
 		else:
-			weapon.stop_shooting()
+			get_active_weapon().stop_shooting()
 
-		if Input.is_action_just_pressed("p1_reload"):
-			weapon.reload()
+		if controller.is_reload_just_pressed():
+			get_active_weapon().reload()
+
+	if controller.is_next_weapon_just_pressed():
+		set_weapon_index((weapon_index + 1) % weapons.size())
+	if controller.is_prev_weapon_just_pressed():
+		set_weapon_index((weapon_index - 1 + weapons.size()) % weapons.size())
 
 	._physics_process(delta)
 
 
-func set_weapon(weapon_: Weapon):
-	weapon = weapon_
-	emit_signal("weapon_changed", weapon)
+func get_active_weapon() -> Weapon:
+	return weapons[weapon_index]
+
+
+func set_weapon_index(weapon_index_: int):
+	get_active_weapon().stop_shooting()
+	weapon_index = weapon_index_
+	emit_signal("weapon_changed", get_active_weapon())
 
 
 func on_took_damage(_damage):
