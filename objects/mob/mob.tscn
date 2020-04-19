@@ -3,7 +3,7 @@
 [ext_resource path="res://objects/mob/masher_anims.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://objects/mob/mob.gd" type="Script" id=2]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=1]
 radius = 29.8058
 
 [node name="mob" type="KinematicBody2D"]
@@ -20,8 +20,7 @@ position = Vector2( 0, -12 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
