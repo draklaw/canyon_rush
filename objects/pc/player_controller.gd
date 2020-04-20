@@ -22,8 +22,7 @@ enum Action {
 
 var viewport: Viewport
 var pc: Node
-var gamepad_index: int = -1
-var gamepad_id: int
+var input_id: int
 var action_names = []
 var look_direction := Vector2(1, 0)
 
@@ -45,21 +44,14 @@ const action_suffixes := [
 ]
 
 
-func setup(viewport_: Viewport, pc_: Node, gamepad_index_: int = -1):
+func setup(viewport_: Viewport, pc_: Node, input_id_: int = -1):
 	viewport = viewport_
 	pc = pc_
-	gamepad_index = gamepad_index_
-
-	if gamepad_index >= 0:
-		var ids = Input.get_connected_joypads()
-		if gamepad_index < ids.size():
-			gamepad_id = ids[gamepad_index]
-		else:
-			gamepad_id = -1
+	input_id = input_id_
 
 	var events = create_default_events()
 
-	var id = "kb_" if gamepad_index < 0 else "pad%d_" % gamepad_index
+	var id = "kb_" if input_id < 0 else "pad%d_" % input_id
 	for act in range(action_suffixes.size()):
 		var act_name = id + action_suffixes[act]
 		action_names.append(act_name)
@@ -87,7 +79,7 @@ func get_move_direction() -> Vector2:
 
 
 func get_look_direction() -> Vector2:
-	if gamepad_index < 0:
+	if input_id < 0:
 		return pc.position.direction_to(viewport.get_mouse_position())
 	else:
 		var direction := Vector2()
@@ -124,7 +116,7 @@ func is_prev_weapon_just_pressed() -> bool:
 
 
 func create_default_events():
-	if gamepad_index < 0:
+	if input_id < 0:
 		return [
 			[new_key_event(KEY_A), new_key_event(KEY_LEFT)],
 			[new_key_event(KEY_D), new_key_event(KEY_RIGHT)],
@@ -174,7 +166,7 @@ func new_mouse_button_event(button):
 
 func new_gamepad_axis_event(axis, value):
 	var event := InputEventJoypadMotion.new()
-	event.device = gamepad_id
+	event.device = input_id
 	event.axis = axis
 	event.axis_value = value
 	return event
@@ -182,7 +174,7 @@ func new_gamepad_axis_event(axis, value):
 
 func new_gamepad_button_event(button):
 	var event := InputEventJoypadButton.new()
-	event.device = gamepad_id
+	event.device = input_id
 	event.button_index = button
 	event.pressed = true
 	return event

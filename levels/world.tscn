@@ -1,14 +1,17 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://objects/mob/mob.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/mob_spawn.gd" type="Script" id=3]
+[ext_resource path="res://levels/flock_spawn.gd" type="Script" id=2]
+[ext_resource path="res://objects/alien/sniper_spawn.tres" type="Resource" id=3]
 [ext_resource path="res://levels/world.gd" type="Script" id=4]
 [ext_resource path="res://objects/human/human.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/gui/gui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/ship.png" type="Texture" id=8]
 [ext_resource path="res://levels/smoke.png" type="Texture" id=9]
+[ext_resource path="res://objects/alien/masher_spawn.tres" type="Resource" id=10]
+[ext_resource path="res://objects/alien/faster_spawn.tres" type="Resource" id=11]
+[ext_resource path="res://objects/alien/tanker_spawn.tres" type="Resource" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120.929, 111.899 )
@@ -83,12 +86,14 @@ position = Vector2( 145.018, 577.629 )
 [node name="mob_spawn" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
-script = ExtResource( 3 )
-mob = ExtResource( 2 )
+script = ExtResource( 2 )
+spawn_table = [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 12 ) ]
 
 [node name="spawn_shape" type="CollisionShape2D" parent="mob_spawn"]
 position = Vector2( 2284.78, 531.679 )
 shape = SubResource( 7 )
+
+[node name="aliens" type="Node" parent="."]
 
 [node name="players" type="Node2D" parent="."]
 
@@ -108,6 +113,10 @@ position = Vector2( 312.5, 709.074 )
 player_index = 3
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
+margin_left = -1.13757
+margin_top = 1.1376
+margin_right = -1.13757
+margin_bottom = 1.13757
 [connection signal="remaining_time_changed" from="." to="gui" method="set_timer"]
 [connection signal="took_damage" from="human" to="gui" method="set_human_health"]
 [connection signal="hp_changed" from="players/pc_1" to="gui" method="set_pc_health"]
