@@ -88,7 +88,7 @@ _global_script_class_icons={
 
 config/name="ld46"
 run/main_scene="res://levels/welcome_screen.tscn"
-config/icon="res://objects/pc/icon.png"
+config/icon="res://assets/icon.png"
 
 [autoload]
 
