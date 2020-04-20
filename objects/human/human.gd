@@ -15,6 +15,7 @@ func _ready() -> void:
 func on_took_damage(_human: Node, _damage: float):
 	var points = ceil(hp / max_hp * 4)
 	sprite.frame = 4 - points
+	$sprite/hit_stream.play()
 
 
 func on_dying():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/human/human.gd" type="Script" id=1]
 [ext_resource path="res://objects/human/human.png" type="Texture" id=2]
 [ext_resource path="res://assets/DeathHuman.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/HitHuman.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.9454
@@ -23,6 +24,11 @@ hframes = 3
 pause_mode = 2
 stream = ExtResource( 3 )
 volume_db = -16.546
+
+[node name="hit_stream" type="AudioStreamPlayer2D" parent="sprite"]
+stream = ExtResource( 4 )
+volume_db = -13.788
+attenuation = 0.00515433
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
