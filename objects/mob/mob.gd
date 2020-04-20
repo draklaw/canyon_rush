@@ -62,7 +62,6 @@ func _ready() -> void:
 	$sprite.frames = sprites[type]
 
 func _physics_process(delta: float) -> void:
-	var _ignore
 	var move = Vector2(0,0)
 	var pc = null
 	var tobot = Vector2(0,0)
@@ -101,7 +100,7 @@ func _physics_process(delta: float) -> void:
 					move = 60*DASH_RANGE * toshot.rotated(PI/2 if randi()%2 else -PI/2).normalized()
 					stat -= DASH_COST
 
-	_ignore = move_and_slide(move)
+	var _ignore = move_and_slide(move)
 
 	attack -= 1
 	if type == SNIPER:
@@ -120,7 +119,7 @@ func _physics_process(delta: float) -> void:
 			var collider = get_slide_collision(i).collider
 			if attack < 0 and collider is Character and not collider.i_am_a_mob_instance:
 				$"sprite".animation = "attack"
-				_ignore = $"sprite".connect("animation_finished", self, "back2walk", [], CONNECT_ONESHOT)
+				assert( $"sprite".connect("animation_finished", self, "back2walk", [], CONNECT_ONESHOT) == OK)
 				collider.take_damage(damage_on_hit)
 				attack = 100
 

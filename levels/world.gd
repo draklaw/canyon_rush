@@ -30,6 +30,8 @@ onready var pcs = [
 	$players/pc_4,
 ]
 
+# Repkits per second
+var kps: float = 0
 
 func _ready() -> void:
 	get_tree().paused = true
@@ -38,12 +40,16 @@ func _ready() -> void:
 
 	if main.mode == Main.Mode.EASY:
 		remaining_time = time_before_win_easy
+		kps = 0.1
 	elif main.mode == Main.Mode.NORMAL:
 		remaining_time = time_before_win_normal
+		kps = 0.05
 	elif main.mode == Main.Mode.HARD:
 		remaining_time = time_before_win_hard
+		kps = 0.01
 	else:
 		remaining_time = 0
+		kps = 0.05
 	emit_signal("remaining_time_changed", remaining_time)
 
 	for i in pcs.size():
@@ -67,6 +73,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if state == PLAYING:
+		if randf() < kps * delta:
+			var nkit = preload("res://objects/items/repkit.tscn").instance()
+			nkit.position = Vector2(1600,500) + Vector2(randi()%600 - 300, randi()%400 - 200)
+			add_child(nkit)
+
 		if main.mode != Main.Mode.ENDLESS:
 			remaining_time -= delta
 			if remaining_time <= 0:
