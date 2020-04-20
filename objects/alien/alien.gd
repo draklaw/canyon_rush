@@ -121,10 +121,10 @@ func process_attack(delta: float) -> void:
 func process_ranged_attack(delta: float) -> void:
 	behavior = Behavior.RANGED_ATTACK
 
-	var target = get_node(target_path)
-	if not target:
+	if not has_node(target_path):
 		process_wander(delta)
 		return
+	var target = get_node(target_path)
 
 	if sprite.animation != "attack":
 		rotate_node.look_at(target.position)
@@ -175,9 +175,10 @@ func steer_toward(delta: float, target: Vector2) -> void:
 	var nb_sum = Vector2()
 	var vel_sum = Vector2()
 	for nb_path in neighbors:
-		var nb = get_node(nb_path)
-		if not nb:
+		if not has_node(nb_path):
 			continue
+
+		var nb = get_node(nb_path)
 
 		count += 1
 		var offset = nb.position - position
