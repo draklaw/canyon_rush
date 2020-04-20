@@ -30,7 +30,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if evolution_factor < 1:
-		evolution_factor += delta/600
+		evolution_factor += delta/480
 	else:
 		evolution_factor = 1
 
