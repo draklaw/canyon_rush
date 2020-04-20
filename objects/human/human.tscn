@@ -8,6 +8,7 @@ radius = 30.9454
 height = 67.0954
 
 [node name="human" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 recovery_time = 0.5
 
