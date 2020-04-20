@@ -77,7 +77,7 @@ func process_wander(delta: float) -> void:
 	if frame_counter == 0:
 		update_target()
 
-	if target_path:
+	if has_node(target_path):
 		process_move_to(delta)
 		return
 
@@ -114,6 +114,8 @@ func process_attack(delta: float) -> void:
 	behavior = Behavior.ATTACK
 
 	if not has_node(target_path):
+		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("frame_changed", self, "on_attack_frame")
 		process_wander(delta)
 		return
 
@@ -131,6 +133,8 @@ func process_ranged_attack(delta: float) -> void:
 	behavior = Behavior.RANGED_ATTACK
 
 	if not has_node(target_path):
+		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
 		process_wander(delta)
 		return
 
@@ -231,28 +235,22 @@ func update_neighbors():
 
 
 func update_target():
-	var prev = target_path
 	target_path = look_for_target()
-
-	if target_path != prev:
-		prints("Change target", target_path)
 
 
 func look_for_target():
-	var candidates = []
-
 	var choice = null
 	var dist = seek_radius
 
 	if has_node("/root/world/human"):
 		var human = get_node("/root/world/human")
-		var d = human_priority * position.distance_to(human.position)
+		var d = position.distance_to(human.position) / max(human_priority, 0.001)
 		if d < dist:
 			choice = human
 			dist = d
 
 	for node in players_node.get_children():
-		var d = pc_priority * position.distance_to(node.position)
+		var d = position.distance_to(node.position) / max(pc_priority, 0.001)
 		if d < dist:
 			choice = node
 			dist = d

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/flock_spawn.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://objects/alien/masher_spawn.tres" type="Resource" id=10]
 [ext_resource path="res://objects/alien/faster_spawn.tres" type="Resource" id=11]
 [ext_resource path="res://objects/alien/tanker_spawn.tres" type="Resource" id=12]
+[ext_resource path="res://objects/alien/rusher_spawn.tres" type="Resource" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120.929, 111.899 )
@@ -87,7 +88,7 @@ position = Vector2( 145.018, 577.629 )
 monitoring = false
 monitorable = false
 script = ExtResource( 2 )
-spawn_table = [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 12 ) ]
+spawn_table = [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
 
 [node name="spawn_shape" type="CollisionShape2D" parent="mob_spawn"]
 position = Vector2( 2284.78, 531.679 )
