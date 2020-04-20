@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DeathAlien.wav-9b3e02eb00ae5c783c94ce4c7c74854c.sample"
+
+[deps]
+
+source_file="res://assets/DeathAlien.wav"
+dest_files=[ "res://.import/DeathAlien.wav-9b3e02eb00ae5c783c94ce4c7c74854c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
