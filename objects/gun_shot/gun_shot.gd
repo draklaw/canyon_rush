@@ -20,7 +20,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	distance_traveled += delta * velocity
 	if distance_traveled > max_range:
-		print("PING")
 		queue_free()
 
 	var dir = transform.basis_xform(Vector2(1, 0))

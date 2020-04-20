@@ -4,12 +4,14 @@
 [ext_resource path="res://objects/alien/alien.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 25.8571
+radius = 30.4137
 
 [node name="alien" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
+max_hp = 10.0
+hp = 10.0
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 12, 0 )

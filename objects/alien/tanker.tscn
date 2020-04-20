@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/alien/alien.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/mob/tanker_anims.tres" type="SpriteFrames" id=2]
+
+[node name="alien" instance=ExtResource( 1 )]
+max_hp = 60.0
+hp = 60.0
+max_speed = 160.0
+mele_damage = 25.0
+
+[node name="sprite" parent="." index="0"]
+position = Vector2( 7.36195, 0 )
+frames = ExtResource( 2 )
