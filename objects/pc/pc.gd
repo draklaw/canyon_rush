@@ -19,8 +19,8 @@ export var dodge_time: float = 0.15
 export var dodge_recovery: float = 0.5
 
 
-onready var machine_gun: Weapon = $machine_gun
-onready var shotgun: Weapon = $shotgun
+onready var machine_gun: Weapon = $ship/machine_gun
+onready var shotgun: Weapon = $ship/shotgun
 onready var weapons = [shotgun, machine_gun]
 
 var controller = null
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 
 	### ORIENTATION
 
-	look_at(position + controller.get_look_direction())
+	$ship.rotation = PI/2 + controller.get_look_direction().angle()
 
 	### WEAPONS
 
@@ -98,7 +98,7 @@ func on_took_damage(_self, _damage):
 	$damage_stream.play()
 
 func on_dying():
-	var node = $sprite.duplicate(0)
+	var node = $ship.duplicate(0)
 	node.animation = "ded"
-	node.transform = $sprite.get_global_transform()
-	$"../..".add_child_below_node(self, node)
+	node.transform = $ship.get_global_transform()
+	$"../../..".add_child_below_node(self, node)
