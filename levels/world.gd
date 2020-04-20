@@ -1,9 +1,9 @@
 extends Node
 
 
-export var time_before_win_easy: float = 30
-export var time_before_win_normal: float = 600
-export var time_before_win_hard: float = 900
+export var time_before_win_easy: float = 180
+export var time_before_win_normal: float = 360
+export var time_before_win_hard: float = 600
 
 
 signal remaining_time_changed
@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 		if randf() < kps * delta:
 			var nkit = preload("res://objects/items/repkit.tscn").instance()
 			nkit.position = Vector2(1600,500) + Vector2(randi()%600 - 300, randi()%400 - 200)
-			add_child(nkit)
+			$items.add_child(nkit)
 
 		if main.mode != Main.Mode.ENDLESS:
 			remaining_time -= delta

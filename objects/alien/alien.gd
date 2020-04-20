@@ -125,7 +125,7 @@ func process_attack(delta: float) -> void:
 		rotate_node.look_at(target.position)
 		sprite.play("attack")
 		sprite.speed_scale = 1 / mele_attack_time
-		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.connect("animation_finished", self, "end_attack")
 		sprite.connect("frame_changed", self, "on_attack_frame")
 
 
@@ -144,7 +144,7 @@ func process_ranged_attack(delta: float) -> void:
 		rotate_node.look_at(target.position)
 		sprite.speed_scale = 1 / ranged_attack_time
 		sprite.play("attack")
-		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.connect("animation_finished", self, "end_attack")
 		sprite.connect("frame_changed", self, "on_ranged_attack_frame")
 
 
@@ -156,8 +156,6 @@ func on_attack_frame():
 		var target = get_node(target_path)
 		if sprite.frame == 1 and can_attack(target):
 			target.take_damage(mele_damage)
-
-	sprite.disconnect("frame_changed", self, "on_attack_frame")
 
 
 func on_ranged_attack_frame():
@@ -171,10 +169,11 @@ func on_ranged_attack_frame():
 		shot.transform = attack_ray.get_global_transform()
 		shot_layer.add_child(shot)
 
-	sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
-
 
 func end_attack():
+	sprite.disconnect("animation_finished", self, "end_attack")
+	sprite.disconnect("frame_changed", self, "on_attack_frame")
+
 	behavior = Behavior.MOVE_TO
 	sprite.animation = "walk"
 	sprite.speed_scale = 1
