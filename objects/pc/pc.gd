@@ -95,10 +95,11 @@ func set_weapon_index(weapon_index_: int):
 
 
 func on_took_damage(_self, _damage):
-	$damage_stream.play()
+	$ship/damage_stream.play()
 
 func on_dying():
 	var node = $ship.duplicate(0)
+	node.get_node("kaboom_stream").play()
 	node.animation = "ded"
 	node.transform = $ship.get_global_transform()
 	$"../../..".add_child_below_node(self, node)

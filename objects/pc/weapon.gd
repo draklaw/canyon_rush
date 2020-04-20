@@ -84,7 +84,7 @@ func shoot_once():
 		shot.rotation = -PI/2 + $"..".rotation + (randf() - .5) * deg2rad(scattering)
 		shot_layer.add_child(shot)
 
-	$"../../shot_stream".play()
+	$"../shot_stream".play()
 
 
 func reload():

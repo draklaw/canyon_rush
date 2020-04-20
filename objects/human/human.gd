@@ -19,6 +19,7 @@ func on_took_damage(_human: Node, _damage: float):
 
 func on_dying():
 	var node = $sprite.duplicate(0)
+	node.get_node("ded_stream").play()
 	node.frame = 4
 	node.transform = $sprite.get_global_transform()
 	$"..".add_child_below_node(self, node)
