@@ -25,9 +25,9 @@ __meta__ = {
 }
 
 [node name="gui" type="VBoxContainer" parent="."]
-margin_left = 89.0
+margin_left = 98.0
 margin_top = 235.0
-margin_right = 787.0
+margin_right = 852.0
 margin_bottom = 905.0
 custom_constants/separation = 24
 __meta__ = {
@@ -35,7 +35,7 @@ __meta__ = {
 }
 
 [node name="settings_group" type="HBoxContainer" parent="gui"]
-margin_right = 698.0
+margin_right = 754.0
 margin_bottom = 496.0
 size_flags_vertical = 3
 custom_constants/separation = 24
@@ -98,34 +98,38 @@ mode = 3
 
 [node name="player_group" type="VBoxContainer" parent="gui/settings_group"]
 margin_left = 274.0
-margin_right = 698.0
+margin_right = 754.0
 margin_bottom = 496.0
 size_flags_horizontal = 3
 custom_constants/separation = 24
 
 [node name="player_1_options" parent="gui/settings_group/player_group" instance=ExtResource( 5 )]
+margin_right = 480.0
 
 [node name="player_2_options" parent="gui/settings_group/player_group" instance=ExtResource( 5 )]
 margin_top = 104.0
+margin_right = 480.0
 margin_bottom = 184.0
 player_index = 1
 enabled = false
 
 [node name="player_3_options" parent="gui/settings_group/player_group" instance=ExtResource( 5 )]
 margin_top = 208.0
+margin_right = 480.0
 margin_bottom = 288.0
 player_index = 2
 enabled = false
 
 [node name="player_4_options" parent="gui/settings_group/player_group" instance=ExtResource( 5 )]
 margin_top = 312.0
+margin_right = 480.0
 margin_bottom = 392.0
 player_index = 3
 enabled = false
 
 [node name="play_button" type="Button" parent="gui"]
 margin_top = 520.0
-margin_right = 698.0
+margin_right = 754.0
 margin_bottom = 670.0
 rect_min_size = Vector2( 0, 150 )
 custom_styles/hover = SubResource( 1 )
