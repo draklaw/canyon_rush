@@ -114,7 +114,7 @@ func process_attack(delta: float) -> void:
 	behavior = Behavior.ATTACK
 
 	if not has_node(target_path):
-		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("animation_finished", self, "end_attack")
 		sprite.disconnect("frame_changed", self, "on_attack_frame")
 		process_wander(delta)
 		return
@@ -133,7 +133,7 @@ func process_ranged_attack(delta: float) -> void:
 	behavior = Behavior.RANGED_ATTACK
 
 	if not has_node(target_path):
-		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("animation_finished", self, "end_attack")
 		sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
 		process_wander(delta)
 		return
