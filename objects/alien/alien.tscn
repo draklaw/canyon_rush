@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/mob/masher_anims.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://objects/alien/alien.gd" type="Script" id=2]
 [ext_resource path="res://assets/shadow.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.2046
+height = 14.1059
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0447
@@ -27,6 +31,14 @@ animation = "walk"
 position = Vector2( 25.532, 0 )
 cast_to = Vector2( 16, 0 )
 collision_mask = 2
+
+[node name="attack_area" type="Area2D" parent="rotate"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="attack_shape" type="CollisionShape2D" parent="rotate/attack_area"]
+position = Vector2( 29.7514, 0 )
+shape = SubResource( 2 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

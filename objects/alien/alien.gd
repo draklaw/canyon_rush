@@ -17,6 +17,8 @@ export var max_rotation: float = 6
 export var velocity: Vector2 = Vector2()
 
 export var seek_radius: float = 1000
+export var pc_priority: float = 1
+export var human_priority: float = 1
 export var mele_damage: float = 10
 export var mele_attack_time: float = 0.8
 
@@ -72,8 +74,10 @@ func _physics_process(delta: float) -> void:
 func process_wander(delta: float) -> void:
 	behavior = Behavior.WANDER
 
-	target_path = look_for_target()
-	if target_path:
+	if frame_counter == 0:
+		update_target()
+
+	if has_node(target_path):
 		process_move_to(delta)
 		return
 
@@ -85,10 +89,14 @@ func process_wander(delta: float) -> void:
 func process_move_to(delta: float) -> void:
 	behavior = Behavior.MOVE_TO
 
-	var target = get_node(target_path)
-	if not target:
+	if frame_counter == 0:
+		update_target()
+
+	if not has_node(target_path):
 		process_wander(delta)
 		return
+
+	var target = get_node(target_path)
 
 	if ranged_damage and position.distance_to(target.position) < ranged_engage_dist:
 		process_ranged_attack(delta)
@@ -105,10 +113,13 @@ func process_move_to(delta: float) -> void:
 func process_attack(delta: float) -> void:
 	behavior = Behavior.ATTACK
 
-	var target = get_node(target_path)
-	if not target:
+	if not has_node(target_path):
+		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("frame_changed", self, "on_attack_frame")
 		process_wander(delta)
 		return
+
+	var target = get_node(target_path)
 
 	if sprite.animation != "attack":
 		rotate_node.look_at(target.position)
@@ -122,8 +133,11 @@ func process_ranged_attack(delta: float) -> void:
 	behavior = Behavior.RANGED_ATTACK
 
 	if not has_node(target_path):
+		sprite.disconnect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
+		sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
 		process_wander(delta)
 		return
+
 	var target = get_node(target_path)
 
 	if sprite.animation != "attack":
@@ -138,9 +152,10 @@ func on_attack_frame():
 	if sprite.frame != 1:
 		return
 
-	var target = get_node(target_path)
-	if target and sprite.frame == 1 and can_attack(target):
-		target.take_damage(mele_damage)
+	if has_node(target_path):
+		var target = get_node(target_path)
+		if sprite.frame == 1 and can_attack(target):
+			target.take_damage(mele_damage)
 
 	sprite.disconnect("frame_changed", self, "on_attack_frame")
 
@@ -207,8 +222,9 @@ func steer_toward(delta: float, target: Vector2) -> void:
 
 
 func can_attack(target: Node2D):
-	attack_ray.force_raycast_update()
-	return attack_ray.get_collider() == target
+	return $rotate/attack_area.overlaps_body(target)
+#	attack_ray.force_raycast_update()
+#	return attack_ray.get_collider() == target
 
 
 func update_neighbors():
@@ -218,21 +234,25 @@ func update_neighbors():
 			neighbors.append(nb.get_path())
 
 
+func update_target():
+	target_path = look_for_target()
+
+
 func look_for_target():
-	var candidates = []
-
-	if has_node("/root/world/human"):
-		candidates.append(get_node("/root/world/human"))
-
-	for node in players_node.get_children():
-		candidates.append(node)
-
 	var choice = null
 	var dist = seek_radius
-	for candidate in candidates:
-		var d = position.distance_to(candidate.position)
+
+	if has_node("/root/world/human"):
+		var human = get_node("/root/world/human")
+		var d = position.distance_to(human.position) / max(human_priority, 0.001)
 		if d < dist:
-			choice = candidate
+			choice = human
+			dist = d
+
+	for node in players_node.get_children():
+		var d = position.distance_to(node.position) / max(pc_priority, 0.001)
+		if d < dist:
+			choice = node
 			dist = d
 
 	return choice.get_path() if choice else @""

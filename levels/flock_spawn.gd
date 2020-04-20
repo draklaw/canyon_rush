@@ -24,7 +24,6 @@ func _ready() -> void:
 	next_spawn.resize(count)
 
 	for i in range(count):
-		var info = spawn_table[i]
 		spawn_progress[i] = 0
 		next_spawn[i] = rand_range(0.5, 1.5)
 
