@@ -43,9 +43,10 @@ var neighbors := []
 
 onready var players_node = $"/root/world/players"
 
-onready var sprite = $sprite
+onready var rotate_node = $rotate
+onready var sprite = $rotate/sprite
 onready var shape = $shape
-onready var attack_ray = $attack_ray
+onready var attack_ray = $rotate/attack_ray
 
 
 func _ready() -> void:
@@ -110,7 +111,7 @@ func process_attack(delta: float) -> void:
 		return
 
 	if sprite.animation != "attack":
-		look_at(target.position)
+		rotate_node.look_at(target.position)
 		sprite.play("attack")
 		sprite.speed_scale = 1 / mele_attack_time
 		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
@@ -126,7 +127,7 @@ func process_ranged_attack(delta: float) -> void:
 		return
 
 	if sprite.animation != "attack":
-		look_at(target.position)
+		rotate_node.look_at(target.position)
 		sprite.speed_scale = 1 / ranged_attack_time
 		sprite.play("attack")
 		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
@@ -197,7 +198,7 @@ func steer_toward(delta: float, target: Vector2) -> void:
 
 	var real_vel = move_and_slide(velocity)
 	velocity = real_vel
-	look_at(position + velocity)
+	rotate_node.look_at(position + velocity)
 
 	sprite.play("walk")
 	if real_vel.length() < max_speed / 4:

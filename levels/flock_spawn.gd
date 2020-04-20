@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 		spawn_progress[i] += delta
 		if spawn_progress[i] >= delay * next_spawn[i]:
 			spawn(info.alien, info.rand_flock_size())
+
 			spawn_progress[i] = 0
 			next_spawn[i] = rand_range(0.5, 1.5)
 

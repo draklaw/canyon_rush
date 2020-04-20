@@ -6,5 +6,5 @@
 [node name="alien" instance=ExtResource( 1 )]
 max_speed = 284.0
 
-[node name="sprite" parent="." index="0"]
+[node name="sprite" parent="rotate" index="0"]
 frames = ExtResource( 2 )

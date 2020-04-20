@@ -9,6 +9,6 @@ hp = 60.0
 max_speed = 160.0
 mele_damage = 25.0
 
-[node name="sprite" parent="." index="0"]
-position = Vector2( 7.36195, 0 )
+[node name="sprite" parent="rotate" index="0"]
+position = Vector2( 7.92757, 0 )
 frames = ExtResource( 2 )

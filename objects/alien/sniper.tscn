@@ -9,5 +9,6 @@ hp = 30.0
 max_speed = 128.0
 ranged_damage = 10.0
 
-[node name="sprite" parent="." index="0"]
+[node name="sprite" parent="rotate" index="0"]
+position = Vector2( 6.5701, 0 )
 frames = ExtResource( 2 )
