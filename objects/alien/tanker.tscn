@@ -12,3 +12,6 @@ mele_damage = 25.0
 [node name="sprite" parent="rotate" index="0"]
 position = Vector2( 7.92757, 0 )
 frames = ExtResource( 2 )
+
+[node name="shadow" parent="." index="2"]
+scale = Vector2( 1.6, 1.6 )

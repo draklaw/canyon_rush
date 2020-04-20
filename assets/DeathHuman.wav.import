@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DeathHuman.wav-8b21fc8179c99e4588ca18ba5ed5091f.sample"
+
+[deps]
+
+source_file="res://assets/DeathHuman.wav"
+dest_files=[ "res://.import/DeathHuman.wav-8b21fc8179c99e4588ca18ba5ed5091f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
