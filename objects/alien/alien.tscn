@@ -1,27 +1,27 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objects/mob/masher_anims.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://objects/mob/mob.gd" type="Script" id=2]
+[ext_resource path="res://objects/alien/alien.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 29.8058
+radius = 25.8571
 
-[node name="mob" type="KinematicBody2D"]
-rotation = -1.5708
+[node name="alien" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
-max_hp = 25.0
-hp = 25.0
-damage_on_hit = 25.0
 
 [node name="sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -12 )
+position = Vector2( 12, 0 )
+rotation = 1.5708
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "walk"
-frame = 1
-playing = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="attack_ray" type="RayCast2D" parent="."]
+position = Vector2( 25.532, 0 )
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
