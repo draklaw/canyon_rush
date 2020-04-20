@@ -40,6 +40,8 @@ func _ready() -> void:
 	var err = connect("took_damage", self, "on_took_damage")
 	assert(err == OK)
 
+	err = connect("dying", self, "on_dying")
+	assert(err == OK)
 
 func _physics_process(delta: float) -> void:
 	### MOVEMENT
@@ -94,3 +96,9 @@ func set_weapon_index(weapon_index_: int):
 
 func on_took_damage(_self, _damage):
 	$damage_stream.play()
+
+func on_dying():
+	var node = $sprite.duplicate(0)
+	node.animation = "ded"
+	node.transform = $sprite.get_global_transform()
+	$"../..".add_child_below_node(self, node)
