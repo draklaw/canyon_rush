@@ -32,6 +32,13 @@ var enter_pressed: bool = false
 func _ready() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
 
+	var music_player = AudioStreamPlayer.new()
+	music_player.stream = preload("res://assets/BGM.wav")
+	music_player.volume_db = -24
+	add_child(music_player)
+	music_player.play()
+
+
 
 func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
