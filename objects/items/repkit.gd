@@ -3,7 +3,8 @@ extends Area2D
 class_name Repkit
 
 func _ready():
-	assert(connect("body_entered", self, "pick_me_up") == OK)
+	# warning-ignore:return_value_discarded
+	connect("body_entered", self, "pick_me_up")
 
 func pick_me_up(dood):
 	if dood.hp < dood.max_hp:
