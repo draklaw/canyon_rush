@@ -1,2 +1,3 @@
-# ld46
-A game for Ludum Dare 46
+# Canyon Rush
+
+A game originally developed for Ludum Dare 46 "Keep it Alive".
