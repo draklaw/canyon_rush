@@ -84,6 +84,16 @@ func _physics_process(delta: float) -> void:
 	._physics_process(delta)
 
 
+func _process(_delta: float) -> void:
+	var weapon := get_active_weapon()
+	var reload = clamp(1 - (weapon.reload_time_remaining / weapon.reload_delay), 0, 1)
+
+	$reload_progress.value = reload
+	$reload_progress.visible = reload != 1
+
+	$no_ammo.visible = weapon.ammo_count == 0
+
+
 func get_active_weapon() -> Weapon:
 	return weapons[weapon_index]
 

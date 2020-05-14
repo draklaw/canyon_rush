@@ -61,9 +61,12 @@ func _physics_process(delta: float) -> void:
 		not shooting
 		or time_before_next_shot > 0
 		or reload_time_remaining > 0
-		or (ammo_count == 0 and ammo_capacity != 0)
 		or (shots_remaining == 0 and burst != 0)
 	):
+		return
+	if ammo_count == 0 and ammo_capacity != 0:
+		$"../out_of_ammo_stream".play()
+		time_before_next_shot += shot_delay
 		return
 
 
@@ -84,7 +87,9 @@ func shoot_once():
 		shot.rotation = -PI/2 + $"..".rotation + (randf() - .5) * deg2rad(scattering)
 		shot_layer.add_child(shot)
 
-	$"../shot_stream".play()
+	var shot_stream = $"../shot_stream"
+	shot_stream.pitch_scale = rand_range(0.8, 1.2)
+	shot_stream.play()
 
 
 func reload():
