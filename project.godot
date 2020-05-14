@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Character",
 "class": "Alien",
 "language": "GDScript",
-"path": "res://objects/alien/alien.gd"
+"path": "res://objects/scripts/alien.gd"
 }, {
 "base": "Control",
 "class": "AmmoBar",
 "language": "GDScript",
-"path": "res://objects/gui/ammo_bar.gd"
+"path": "res://gui/ammo_bar.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
-"path": "res://objects/character.gd"
+"path": "res://objects/scripts/character.gd"
 }, {
 "base": "Area2D",
 "class": "FlockSpawn",
@@ -37,27 +37,27 @@ _global_script_classes=[ {
 "base": "Character",
 "class": "Mob",
 "language": "GDScript",
-"path": "res://objects/mob/mob.gd"
+"path": "res://objects/scripts/mob.gd"
 }, {
 "base": "Character",
 "class": "PlayerCharacter",
 "language": "GDScript",
-"path": "res://objects/pc/pc.gd"
+"path": "res://objects/scripts/pc.gd"
 }, {
 "base": "Object",
 "class": "PlayerController",
 "language": "GDScript",
-"path": "res://objects/pc/player_controller.gd"
+"path": "res://objects/scripts/player_controller.gd"
 }, {
 "base": "Area2D",
 "class": "Repkit",
 "language": "GDScript",
-"path": "res://objects/items/repkit.gd"
+"path": "res://objects/scripts/repkit.gd"
 }, {
 "base": "Resource",
 "class": "SpawnInfo",
 "language": "GDScript",
-"path": "res://objects/alien/spawn_info.gd"
+"path": "res://objects/scripts/spawn_info.gd"
 }, {
 "base": "Reference",
 "class": "Utils",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://objects/pc/weapon.gd"
+"path": "res://objects/scripts/weapon.gd"
 } ]
 _global_script_class_icons={
 "Alien": "",
@@ -98,7 +98,6 @@ main="*res://levels/main.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -106,7 +105,7 @@ window/stretch/aspect="keep"
 [gui]
 
 theme/use_hidpi=true
-theme/custom_font="res://objects/gui/font.tres"
+theme/custom_font="res://gui/font.tres"
 
 [layer_names]
 

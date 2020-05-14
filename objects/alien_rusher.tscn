@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/alien.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/anims/rusher_anims.tres" type="SpriteFrames" id=2]
+
+
+
+
+[node name="alien" instance=ExtResource( 1 )]
+seek_radius = 2000.0
+pc_priority = 0.2
+
+[node name="sprite" parent="rotate" index="0"]
+frames = ExtResource( 2 )

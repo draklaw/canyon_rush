@@ -74,7 +74,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if state == PLAYING:
 		if randf() < kps * delta:
-			var nkit = preload("res://objects/items/repkit.tscn").instance()
+			var nkit = preload("res://objects/repkit.tscn").instance()
 			nkit.position = Vector2(1600,500) + Vector2(randi()%600 - 300, randi()%400 - 200)
 			$items.add_child(nkit)
 

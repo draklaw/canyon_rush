@@ -2,17 +2,21 @@
 
 [ext_resource path="res://levels/test_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/flock_spawn.gd" type="Script" id=2]
-[ext_resource path="res://objects/alien/sniper_spawn.tres" type="Resource" id=3]
+[ext_resource path="res://objects/resources/sniper_spawn.tres" type="Resource" id=3]
 [ext_resource path="res://levels/world.gd" type="Script" id=4]
-[ext_resource path="res://objects/human/human.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/gui/gui.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/pc/pc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/human.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/gui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/pc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/ship.png" type="Texture" id=8]
 [ext_resource path="res://levels/smoke.png" type="Texture" id=9]
-[ext_resource path="res://objects/alien/masher_spawn.tres" type="Resource" id=10]
-[ext_resource path="res://objects/alien/faster_spawn.tres" type="Resource" id=11]
-[ext_resource path="res://objects/alien/tanker_spawn.tres" type="Resource" id=12]
-[ext_resource path="res://objects/alien/rusher_spawn.tres" type="Resource" id=13]
+[ext_resource path="res://objects/resources/masher_spawn.tres" type="Resource" id=10]
+[ext_resource path="res://objects/resources/faster_spawn.tres" type="Resource" id=11]
+[ext_resource path="res://objects/resources/tanker_spawn.tres" type="Resource" id=12]
+[ext_resource path="res://objects/resources/rusher_spawn.tres" type="Resource" id=13]
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120.929, 111.899 )
