@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://objects/scripts/spawn_info.gd" type="Script" id=1]
+[ext_resource path="res://objects/alien_rusher.tscn" type="PackedScene" id=2]
+
+
+
+
+[resource]
+script = ExtResource( 1 )
+alien = ExtResource( 2 )
+min_flock_size = 3
+max_flock_size = 8
+delay_start = 12.0
+delay_end = 8.0

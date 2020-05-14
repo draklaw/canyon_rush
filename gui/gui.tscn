@@ -1,0 +1,185 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/gui.gd" type="Script" id=1]
+[ext_resource path="res://gui/player_info.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/human_bar_4.tres" type="Texture" id=4]
+[ext_resource path="res://gui/font_big.tres" type="DynamicFont" id=5]
+[ext_resource path="res://gui/timer_label.gd" type="Script" id=8]
+
+
+[node name="gui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main_layout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = -24.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players_row" type="HBoxContainer" parent="main_layout"]
+margin_right = 1872.0
+margin_bottom = 64.0
+
+[node name="player_info_1" parent="main_layout/players_row" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_2" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 470.0
+margin_top = 0.0
+margin_right = 932.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_3" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 626.0
+margin_top = 0.0
+margin_right = 1244.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="player_info_4" parent="main_layout/players_row" instance=ExtResource( 2 )]
+visible = false
+margin_left = 940.0
+margin_top = 0.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="spacer" type="Control" parent="main_layout"]
+margin_top = 72.0
+margin_right = 1872.0
+margin_bottom = 946.0
+size_flags_vertical = 3
+
+[node name="human_row" type="HBoxContainer" parent="main_layout"]
+margin_top = 954.0
+margin_right = 1872.0
+margin_bottom = 1032.0
+custom_constants/separation = 64
+
+[node name="human_bar" type="TextureRect" parent="main_layout/human_row"]
+margin_right = 256.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 256, 64 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="evac_bar" type="VBoxContainer" parent="main_layout/human_row"]
+margin_left = 320.0
+margin_right = 626.0
+margin_bottom = 78.0
+
+[node name="timer_label" type="Label" parent="main_layout/human_row/evac_bar"]
+margin_right = 306.0
+margin_bottom = 30.0
+text = "Time before evac:"
+align = 1
+script = ExtResource( 8 )
+
+[node name="timer" type="Label" parent="main_layout/human_row/evac_bar"]
+margin_top = 38.0
+margin_right = 306.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 140, 0 )
+custom_fonts/font = ExtResource( 5 )
+text = "10:00"
+align = 1
+
+[node name="game_over_panel" type="Panel" parent="."]
+visible = false
+margin_left = 560.0
+margin_top = 384.0
+margin_right = 1360.0
+margin_bottom = 672.0
+
+[node name="label" type="RichTextLabel" parent="game_over_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+bbcode_enabled = true
+bbcode_text = "[font=res://objects/gui/font_big.tres]The human died.[/font]
+
+
+You failed to [color=#e15a5a]keep him alive[/color] !
+
+
+[right]Press [color=#e15a5a][enter][/color] or [color=#e15a5a][X][/color] to try again.[/right]
+"
+text = "The human died.
+
+
+You failed to keep him alive !
+
+
+Press [enter] or [X] to try again.
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_panel" type="Panel" parent="."]
+margin_left = 560.0
+margin_top = 256.0
+margin_right = 1360.0
+margin_bottom = 784.0
+
+[node name="label" type="RichTextLabel" parent="start_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.8506
+margin_top = 16.0
+margin_right = -14.1494
+margin_bottom = -16.0
+bbcode_enabled = true
+bbcode_text = "[font=res://objects/gui/font_big.tres]Your ship has crashed.[/font]
+
+A human is harmed and all medbots are down. As a security bot, you must [color=#e15a5a]keep him alive[/color] until rescue arrives.
+
+
+[color=#e15a5a]Move:[/color] Arrow keys or WASD
+[color=#e15a5a]Shoot:[/color] left click
+[color=#e15a5a]Dodge:[/color] right click
+[color=#e15a5a]Reload:[/color] R or 4th mouse button
+[color=#e15a5a]Change weapon:[/color] Q or E
+
+
+[right]Press [color=#e15a5a][enter][/color] or [color=#e15a5a][X][/color] to start.[/right]
+"
+text = "Your ship has crashed.
+
+A human is harmed and all medbots are down. As a security bot, you must keep him alive until rescue arrives.
+
+
+Move: Arrow keys or WASD
+Shoot: left click
+Dodge: right click
+Reload: R or 4th mouse button
+Change weapon: Q or E
+
+
+Press [enter] or [X] to start.
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
