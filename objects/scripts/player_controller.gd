@@ -17,6 +17,8 @@ enum Action {
 	RELOAD,
 	NEXT_WEAPON,
 	PREV_WEAPON,
+
+	ACTION_COUNT,
 }
 
 
@@ -27,7 +29,7 @@ var action_names = []
 var look_direction := Vector2(1, 0)
 
 
-const action_suffixes := [
+const action_name := [
 	"left",
 	"right",
 	"up",
@@ -44,6 +46,24 @@ const action_suffixes := [
 ]
 
 
+const mouse_name_from_button := {
+	BUTTON_LEFT: "mouse_left",
+	BUTTON_RIGHT: "mouse_right",
+	BUTTON_MIDDLE: "mouse_middle",
+	BUTTON_WHEEL_UP: "wheel_up",
+	BUTTON_WHEEL_DOWN: "wheel_down",
+	BUTTON_WHEEL_LEFT: "wheel_left",
+	BUTTON_WHEEL_RIGHT: "wheel_right",
+	BUTTON_XBUTTON1: "mouse_prev",
+	BUTTON_XBUTTON2: "mouse_next",
+}
+static func mouse_button_from_name(name):
+	for button in mouse_name_from_button:
+		if name == mouse_name_from_button[button]:
+			return button
+	return null
+
+
 func setup(viewport_: Viewport, pc_: Node, input_id_: int = -1):
 	viewport = viewport_
 	pc = pc_
@@ -52,8 +72,8 @@ func setup(viewport_: Viewport, pc_: Node, input_id_: int = -1):
 	var events = create_default_events()
 
 	var id = "kb_" if input_id < 0 else "pad%d_" % input_id
-	for act in range(action_suffixes.size()):
-		var act_name = id + action_suffixes[act]
+	for act in range(action_name.size()):
+		var act_name = id + action_name[act]
 		action_names.append(act_name)
 
 		if not InputMap.has_action(act_name):
@@ -117,21 +137,19 @@ func is_prev_weapon_just_pressed() -> bool:
 
 func create_default_events():
 	if input_id < 0:
-		return [
-			[new_key_event(KEY_A), new_key_event(KEY_LEFT)],
-			[new_key_event(KEY_D), new_key_event(KEY_RIGHT)],
-			[new_key_event(KEY_W), new_key_event(KEY_UP)],
-			[new_key_event(KEY_S), new_key_event(KEY_DOWN)],
-			[],
-			[],
-			[],
-			[],
-			[new_mouse_button_event(BUTTON_LEFT)],
-			[new_mouse_button_event(BUTTON_RIGHT)],
-			[new_key_event(KEY_R), new_mouse_button_event(BUTTON_MASK_XBUTTON1)],
-			[new_key_event(KEY_E)],
-			[new_key_event(KEY_Q)],
-		]
+		var keyboard_map: Dictionary = viewport.get_node("main").keyboard_map
+		var key_events := []
+		for action in range(Action.ACTION_COUNT):
+			var events = []
+			for key_name in keyboard_map.get(action, []):
+				var mouse_button = mouse_button_from_name(key_name)
+				if mouse_button != null:
+					events.append(new_mouse_button_event(mouse_button))
+				else:
+					var key = OS.find_scancode_from_string(key_name)
+					events.append(new_key_event(key))
+			key_events.append(events)
+		return key_events
 	else:
 		return [
 			[new_gamepad_axis_event(JOY_ANALOG_LX, -1), new_gamepad_button_event(JOY_DPAD_LEFT)],
