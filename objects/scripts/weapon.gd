@@ -10,6 +10,7 @@ export var reload_delay: float = 1
 export var burst: int = 1
 export var shot_count: int = 1
 export var shot_delay: float = 0.2
+export var max_range: float = 3000
 export var scattering: float = 0
 export var shot_speed: float = 1024
 export var shot_speed_var: float = 0
@@ -85,6 +86,7 @@ func shoot_once():
 		shot.velocity = shot_speed * (1 + (randf() - .5) * shot_speed_var)
 		shot.position = to_global(position)
 		shot.rotation = -PI/2 + $"..".rotation + (randf() - .5) * deg2rad(scattering)
+		shot.max_range = max_range
 		shot_layer.add_child(shot)
 
 	var shot_stream = $"../shot_stream"

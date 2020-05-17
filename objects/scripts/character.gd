@@ -17,6 +17,7 @@ signal dying
 
 
 var remaining_recovery_time = 0
+var alive = true
 
 
 func _ready() -> void:
@@ -44,5 +45,6 @@ func take_damage(damage: float):
 
 
 func die():
+	alive = false
 	emit_signal("dying")
 	queue_free()

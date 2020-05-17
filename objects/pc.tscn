@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/sprites/ally.png" type="Texture" id=1]
 [ext_resource path="res://objects/scripts/pc.gd" type="Script" id=2]
@@ -13,14 +13,7 @@
 [ext_resource path="res://objects/scripts/reload_progress.gd" type="Script" id=11]
 [ext_resource path="res://objects/sprites/reload_progress.png" type="Texture" id=12]
 [ext_resource path="res://objects/sprites/no_ammo.png" type="Texture" id=13]
-
-
-
-
-
-
-
-
+[ext_resource path="res://objects/shotgun_shot.tscn" type="PackedScene" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -72,6 +65,7 @@ recovery_time = 0.5
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="shotgun" type="Node2D" parent="ship"]
@@ -80,12 +74,13 @@ scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 4 )
 damage = 5.0
 ammo_capacity = 5
-reload_delay = 1.5
+reload_delay = 1.0
 shot_count = 12
-shot_delay = 0.8
-scattering = 12.0
+shot_delay = 0.6
+max_range = 600.0
+scattering = 24.0
 shot_speed_var = 0.1
-shot = ExtResource( 3 )
+shot = ExtResource( 14 )
 
 [node name="machine_gun" type="Node2D" parent="ship"]
 position = Vector2( 0, -15 )
