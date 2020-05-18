@@ -86,8 +86,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ld46"
+config/name="canyon_rush"
 run/main_scene="res://levels/welcome_screen.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="canyon_rush"
 config/icon="res://assets/icon.png"
 
 [autoload]
