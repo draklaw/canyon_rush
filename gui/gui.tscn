@@ -6,7 +6,6 @@
 [ext_resource path="res://gui/font_big.tres" type="DynamicFont" id=5]
 [ext_resource path="res://gui/timer_label.gd" type="Script" id=8]
 
-
 [node name="gui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -116,7 +115,7 @@ margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -16.0
 bbcode_enabled = true
-bbcode_text = "[font=res://objects/gui/font_big.tres]The human died.[/font]
+bbcode_text = "[font=res://gui/font_big.tres]The human died.[/font]
 
 
 You failed to [color=#e15a5a]keep him alive[/color] !
@@ -151,7 +150,7 @@ margin_top = 16.0
 margin_right = -14.1494
 margin_bottom = -16.0
 bbcode_enabled = true
-bbcode_text = "[font=res://objects/gui/font_big.tres]Your ship has crashed.[/font]
+bbcode_text = "[font=res://gui/font_big.tres]Your ship has crashed.[/font]
 
 A human is harmed and all medbots are down. As a security bot, you must [color=#e15a5a]keep him alive[/color] until rescue arrives.
 
