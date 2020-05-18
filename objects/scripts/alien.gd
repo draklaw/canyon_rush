@@ -54,6 +54,9 @@ onready var attack_ray = $rotate/attack_ray
 func _ready() -> void:
 	frame_counter = randi() % update_every
 
+	sprite.connect("animation_finished", self, "end_attack")
+	sprite.connect("frame_changed", self, "on_attack_frame")
+
 
 func _physics_process(delta: float) -> void:
 	frame_counter = (frame_counter + 1) % update_every
@@ -114,8 +117,6 @@ func process_attack(delta: float) -> void:
 	behavior = Behavior.ATTACK
 
 	if not has_node(target_path):
-		sprite.disconnect("animation_finished", self, "end_attack")
-		sprite.disconnect("frame_changed", self, "on_attack_frame")
 		process_wander(delta)
 		return
 
@@ -125,16 +126,12 @@ func process_attack(delta: float) -> void:
 		rotate_node.look_at(target.position)
 		sprite.play("attack")
 		sprite.speed_scale = 1 / mele_attack_time
-		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
-		sprite.connect("frame_changed", self, "on_attack_frame")
 
 
 func process_ranged_attack(delta: float) -> void:
 	behavior = Behavior.RANGED_ATTACK
 
 	if not has_node(target_path):
-		sprite.disconnect("animation_finished", self, "end_attack")
-		sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
 		process_wander(delta)
 		return
 
@@ -144,37 +141,30 @@ func process_ranged_attack(delta: float) -> void:
 		rotate_node.look_at(target.position)
 		sprite.speed_scale = 1 / ranged_attack_time
 		sprite.play("attack")
-		sprite.connect("animation_finished", self, "end_attack", [], CONNECT_ONESHOT)
-		sprite.connect("frame_changed", self, "on_ranged_attack_frame")
 
 
 func on_attack_frame():
 	if sprite.frame != 1:
 		return
 
-	if has_node(target_path):
-		var target = get_node(target_path)
-		if sprite.frame == 1 and can_attack(target):
-			target.take_damage(mele_damage)
-
-	sprite.disconnect("frame_changed", self, "on_attack_frame")
-
-
-func on_ranged_attack_frame():
-	if sprite.frame != 1:
-		return
-
-	var shot_layer = $"/root/world/shots"
-	if shot_layer:
-		var shot = ranged_shot.instance()
-		shot.max_range = ranged_shot_dist
-		shot.transform = attack_ray.get_global_transform()
-		shot_layer.add_child(shot)
-
-	sprite.disconnect("frame_changed", self, "on_ranged_attack_frame")
+	if behavior == Behavior.ATTACK:
+		if has_node(target_path):
+			var target = get_node(target_path)
+			if sprite.frame == 1 and can_attack(target):
+				target.take_damage(mele_damage)
+	elif behavior == Behavior.RANGED_ATTACK:
+		var shot_layer = $"/root/world/shots"
+		if shot_layer:
+			var shot = ranged_shot.instance()
+			shot.max_range = ranged_shot_dist
+			shot.transform = attack_ray.get_global_transform()
+			shot_layer.add_child(shot)
 
 
 func end_attack():
+	if behavior != Behavior.ATTACK and behavior != Behavior.RANGED_ATTACK:
+		return
+
 	behavior = Behavior.MOVE_TO
 	sprite.animation = "walk"
 	sprite.speed_scale = 1
